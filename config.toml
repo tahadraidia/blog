@@ -1,0 +1,6 @@
+baseURL = "https://tahadraidia.com/"
+languageCode = "en-us"
+title = "Taha Draidia"
+theme = "tahadraidia_theme"
+[params]
+  mainSections = ['blog', 'research']

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Taha Draidia</title>
+    <link>https://tahadraidia.com/posts/</link>
+    <description>Recent content on Taha Draidia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://tahadraidia.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Let&#39;s build a Python module in C</title>
+      <link>https://tahadraidia.com/posts/python-c-module/</link>
+      <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/python-c-module/</guid>
+      <description>Background Python is one of the most used programming language nowadays specially due its popularity in data science, deep and machine learning fields; Truth to be told, under the hood there is C and/or C++ code running.
+Let&amp;rsquo;s take for example some popular python libraries used in math and machine learn to illustrate that point:
+ Numpy (33.2% of the code is written in C) TensorFlow (61% of the code is written in C++) PyTorch (53% of the code in written in C++ and 4% in C)  The raison that these libraries are build in C and/or C++ is for performance issues mainly, also it is important to note that Python is written in C, hence it provides a C API to extend the language by creating new modules at lower-level possible.</description>
+    </item>
+    
+    <item>
+      <title>Michał Bentkowski XSS Challenge</title>
+      <link>https://tahadraidia.com/posts/micha%C5%82-bentkowski-xss-challenge/</link>
+      <pubDate>Tue, 05 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/micha%C5%82-bentkowski-xss-challenge/</guid>
+      <description>Back in April, Michał Bentkowski posted an XSS challenge on twitter. So I decided to give this a try and here is my write-up about it.
+The first thing that I noticed when I visited the page is that the challenge was served via GitHub Pages. From there, I knew that CSP did not apply to the challenge.
+The challenge rules were as follows:
+Please enter some HTML. It gets sanitized and inserted to a &amp;lt;div&amp;gt;.</description>
+    </item>
+    
+    <item>
+      <title>Delivering more than just presents: An Xmas story of self-XSS on Amazon.com</title>
+      <link>https://tahadraidia.com/posts/xmas-amazon-self-xss/</link>
+      <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/xmas-amazon-self-xss/</guid>
+      <description>It&amp;rsquo;s been a long time since my last blog post, as I was preparing for my OSCP. Well, I&amp;rsquo;m glad to inform you all that I&amp;rsquo;m now an Offensive Security Certified Professional.
+In this post, I will walk you through how, in less than five minutes, I found a self-XSS bug on the main Amazon.com website.
+It was Chrismas time and a colleague of mine had introduced me to Amazon Prime Video, so I decided to take a look at it.</description>
+    </item>
+    
+    <item>
+      <title>OverTheWire&amp;#58; Natas 0-10</title>
+      <link>https://tahadraidia.com/posts/on-the-wire-natas-0-10/</link>
+      <pubDate>Tue, 19 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/on-the-wire-natas-0-10/</guid>
+      <description>Preparing for OSCP, I&amp;rsquo;ve been working through OverTheWire - natas and here is my walktrough for levels 0-10. Natas is a series of insecure webapps, which aim to teach the basics of web security.
+The security topics covered in these levels include:
+ Editing HTTP headers Editing cookies File inclusion vulnerabilities Bruteforce techniques Command injections  Natas 0 It says that we can find the password for the next level on the page, yet we don&amp;rsquo;t see it, do we ?</description>
+    </item>
+    
+    <item>
+      <title>Mr Robot Vulnhub Challenge Walkthrough</title>
+      <link>https://tahadraidia.com/posts/mr-robot-boot2root-challenge/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/mr-robot-boot2root-challenge/</guid>
+      <description>I had some extra time this weekend so I decided to play Mr Robot hacking challenge. I heard a lot about that challenge but I didn&amp;rsquo;t have time to hack it. Now was the time. I downloaded the virtual machine image from vulnhub, fired up virtulbox, started kali linux vm.
+Enumeration time, I always start with port scanning to see what services are running but to do so I need to find the machine&amp;rsquo;s IP first.</description>
+    </item>
+    
+    <item>
+      <title>Bypass Content Security Policy framing restriction rule - OLX</title>
+      <link>https://tahadraidia.com/posts/bypass-csp-framing-restriction-rule-olx/</link>
+      <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/bypass-csp-framing-restriction-rule-olx/</guid>
+      <description>It&amp;rsquo;s been a while since my last post. Today I decided to share with you a bug I found on a public bug bounty program on HackerOne. You can find the original report here.
+This post is about a misconfiguration in CSP rule that leaves the website vulnerable to UI redressing aka clickjacking. This attack is widly used by scammer and spammers to trick users.
+After some recon on olx.co.za and olx.</description>
+    </item>
+    
+    <item>
+      <title>Reflective XSS via angularJS template injection - Hostinger</title>
+      <link>https://tahadraidia.com/posts/xss-via-angularjs-template-injection_hostinger/</link>
+      <pubDate>Fri, 17 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/xss-via-angularjs-template-injection_hostinger/</guid>
+      <description>Introduction This is a write-up of an AngularJS Template Injection I found in the main domain of Hostinger. If you don&amp;rsquo;t know what&amp;rsquo;s client-side template injection I invite you to take a look at those links [1][2]. Please note that this is my first write-up, I hope you&amp;rsquo;ll enjoy it.
+It all started when @berkanexo was telling me that he got listed on Hostinger Wall Of Fame so I decided to take a look at their website.</description>
+    </item>
+    
+    <item>
+      <title>Hello Blog ! My goals for 2018</title>
+      <link>https://tahadraidia.com/posts/git-init-blog/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/git-init-blog/</guid>
+      <description>Hello world, welcome to my little paradise, I&amp;rsquo;m Taha Ibrahim DRAIDIA, I&amp;rsquo;m a software developer interested in application security, binary exploitation, exploit developement, ethical hacking and bug bounties. I never wrote a blog before, this my first time, I hope you&amp;rsquo;ll like my writings. Below are the reasons why I decided to start writing a blog:
+ I used to take notes on text files, they got messy I would like to share what I&amp;rsquo;ve learnt along my journey in computers I would like to increase my writing skills I would like to get feed back about my code, researchs and methodologies I would like to feel more connected with people who share the same interests  Here is a list of topics which I&amp;rsquo;ll be writing about:</description>
+    </item>
+    
+  </channel>
+</rss>

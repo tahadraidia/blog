@@ -1,0 +1,32 @@
+{{ define "main" }}
+  
+  <!-- Short About. -->
+  <!-- {{- partial "short-about.html" . -}} -->
+  <!-- List notes. --> 
+  {{ if (where .Site.RegularPages "Section" "posts") }}
+  <dd>
+  	<h3>Posts</h3>
+  </dd>
+  {{ range where .Site.RegularPages "Section" "posts" }}
+  <dd>
+    	<a id="note_title" class="note_title" href="{{.Permalink}}">{{.Title}}</a>
+        <!-- <span id="note_date" class="note_date">{{.Date.Format "2006-01-02"}}</span> -->
+        <span id="note_date" class="note_date">{{.Date.Format "Monday, Jan 2, 2006"}}</span>
+  </dd>
+  {{ end }}
+  {{ end }}
+  <!-- List research. --> 
+  {{ if (where .Site.RegularPages "Section" "research") }}
+  <dd>
+  	<h3>Researchs</h3>
+  </dd>
+  {{ range where .Site.RegularPages "Section" "research" }}
+  <dd>
+    	<a id="note_title" class="note_title" href="{{.Permalink}}">{{.Title}}</a>
+        <!-- <span id="note_date" class="note_date">{{.Date.Format "2006-01-02"}}</span> -->
+        <span id="note_date" class="note_date">{{.Date.Format "Monday, Jan 2, 2006"}}</span>
+  </dd>
+  {{ end }}
+  {{ end }}
+</dl>
+{{ end }}

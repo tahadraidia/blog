@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/highlight.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    
+    
+    <title>Taha Draidia | Delivering more than just presents: An Xmas story of self-XSS on Amazon.com</title>
+    <script src="/js/highlight.min.js"></script>
+    <script> hljs.initHighlightingOnLoad(); </script>
+</head><body>
+        
+        <div id="container" class="container">
+<span class="home_button"><a href="/">Back to home</a></span>
+<h2 class="note_title">
+<a href="/posts/xmas-amazon-self-xss/" rel="bookmark"
+           title="Permalink to Delivering more than just presents: An Xmas story of self-XSS on Amazon.com">Delivering more than just presents: An Xmas story of self-XSS on Amazon.com</a></h2>
+
+
+<div class="note_info">
+        <div class="origin">
+            <strong>Created by:</strong><a href="https://twitter.com/tahadraidia">@tahadraidia</a> || <a href="https://tahadraidia.com">tahadraidia.com</a> 
+        </div>
+		<br />
+
+        <div class="published" title="2020-04-02 00:00:00 &#43;0000 UTC">
+            <strong>Published:</strong> <time datetime="2020-04-02">Apr 2, 2020</time>
+        </div>
+		<br />
+
+        <div class="tags" title="tags">
+        	
+        	<strong>Tags:</strong>
+        	
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/xss">XSS</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/javascript">Javascript</a>
+            
+            
+        </div>
+</div>
+
+<br>
+<p>It&rsquo;s been a long time since my last blog post, as I was preparing for my OSCP. Well, I&rsquo;m glad to inform you all that I&rsquo;m now an Offensive Security Certified Professional.</p>
+<p>In this post, I will walk you through how, in less than five minutes, I found a self-XSS bug on the main Amazon.com website.</p>
+<p>It was Chrismas time and a colleague of mine had introduced me to Amazon Prime Video, so I decided to take a look at it. Whilst browsing the Amazon website, I noticed something out of the ordinary; the website used to display the user&rsquo;s fullname in the top-left corner of the page, but this time only the first name was showing.</p>
+<p>The fact only the first name was showing got me curious, so I decided to review the source code of the page looking for the pattern <strong>Taha</strong>. It turns out this was reflected several times in different contexts.</p>
+<p>The one that caught my eye was the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.<span style="color:#a6e22e">$Nav</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">$Nav</span>.<span style="color:#a6e22e">declare</span>(<span style="color:#e6db74">&#39;config.customerName&#39;</span>, <span style="color:#e6db74">&#39;Taha&#39;</span>);
+</code></pre></div><p>The user&rsquo;s first name was being reflected inside a JavaScript context here! At this point, I&rsquo;m pretty sure we all have the same idea in mind; close off the string and inject our code!</p>
+<p>The way I see it is we have two options for a payload here:</p>
+<ul>
+<li><code>');alert(0);void('</code>
+or</li>
+<li><code>'-alert(0)-'</code></li>
+</ul>
+<p>The last payload wins in this case for the following reasons:</p>
+<ul>
+<li>Only 12 characters long</li>
+<li>Cleaner syntax</li>
+</ul>
+<p>On pasting this into the first name field and viewing any page under my account, the XSS payload would execute:</p>
+<p><img src="/images/self-xss-amazon/reflected-js-context.png" alt="POC Picture"></p>
+<!-- raw HTML omitted -->
+<p>Please note that this is known as self-XSS, as you can only inject youself and can&rsquo;t harm anyone else with this unless chaining it with another vulnerablity such as an inconsistent access controls.</p>
+<p>Since Amazon does not have a bug bounty program, testing their services would be illegal, so no further tests were made to escalate this issue.</p>
+<p>This is issue afftected the desktop version of the main Amazon.com website only. Other Amazon products were not affected.</p>
+<p>Timeline:</p>
+<ul>
+<li>21/12/2019: Reported to Amazon</li>
+<li>23/12/2019: Acknowleged by Amazon Security Team</li>
+<li>20/01/2020: Resolved by Amazon</li>
+<li>15/03/2020: Asked Amazon for updates</li>
+<li>31/03/2020: Public disclosure</li>
+</ul>
+<p>Thank you for reading.</p>
+
+  <div class="contact">
+    <h2>Contact</h2>
+    Please feel free to ping me at <a href="https://twitter.com/tahadraidia">@tahadraidia</a>. Also you can see more of my work at <a href="https://tahadraidia.com">https://tahadraidia.com</a>.
+</div>
+</br> 
+        </div>
+        <script> hljs.initHighlightingOnLoad(); </script></body>
+</html>

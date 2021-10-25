@@ -1,0 +1,23 @@
+{{ $dateTime := .PublishDate.Format "2006-01-02" }}
+{{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
+<div class="note_info">
+        <div class="origin">
+            <strong>Created by:</strong><a href="https://twitter.com/tahadraidia">@tahadraidia</a> || <a href="https://tahadraidia.com">tahadraidia.com</a> 
+        </div>
+		<br />
+
+        <div class="published" title="{{ .Date }}">
+            <strong>Published:</strong> <time datetime="{{ $dateTime }}">{{ .PublishDate.Format $dateFormat }}</time>
+        </div>
+		<br />
+
+        <div class="tags" title="tags">
+        	{{ with .Params.tags }}
+        	<strong>Tags:</strong>
+        	{{ range . }}
+			{{ $href := print (absURL "tags/") (urlize .) }}
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="{{ $href }}">{{ . }}</a>
+            {{ end }}
+            {{ end }}
+        </div>
+</div><!-- end of post metadata -->

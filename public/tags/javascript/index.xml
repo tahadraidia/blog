@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on Taha Draidia</title>
+    <link>https://tahadraidia.com/tags/javascript/</link>
+    <description>Recent content in Javascript on Taha Draidia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 05 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://tahadraidia.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Michał Bentkowski XSS Challenge</title>
+      <link>https://tahadraidia.com/posts/micha%C5%82-bentkowski-xss-challenge/</link>
+      <pubDate>Tue, 05 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/micha%C5%82-bentkowski-xss-challenge/</guid>
+      <description>Back in April, Michał Bentkowski posted an XSS challenge on twitter. So I decided to give this a try and here is my write-up about it.
+The first thing that I noticed when I visited the page is that the challenge was served via GitHub Pages. From there, I knew that CSP did not apply to the challenge.
+The challenge rules were as follows:
+Please enter some HTML. It gets sanitized and inserted to a &amp;lt;div&amp;gt;.</description>
+    </item>
+    
+    <item>
+      <title>Delivering more than just presents: An Xmas story of self-XSS on Amazon.com</title>
+      <link>https://tahadraidia.com/posts/xmas-amazon-self-xss/</link>
+      <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/xmas-amazon-self-xss/</guid>
+      <description>It&amp;rsquo;s been a long time since my last blog post, as I was preparing for my OSCP. Well, I&amp;rsquo;m glad to inform you all that I&amp;rsquo;m now an Offensive Security Certified Professional.
+In this post, I will walk you through how, in less than five minutes, I found a self-XSS bug on the main Amazon.com website.
+It was Chrismas time and a colleague of mine had introduced me to Amazon Prime Video, so I decided to take a look at it.</description>
+    </item>
+    
+    <item>
+      <title>Reflective XSS via angularJS template injection - Hostinger</title>
+      <link>https://tahadraidia.com/posts/xss-via-angularjs-template-injection_hostinger/</link>
+      <pubDate>Fri, 17 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/xss-via-angularjs-template-injection_hostinger/</guid>
+      <description>Introduction This is a write-up of an AngularJS Template Injection I found in the main domain of Hostinger. If you don&amp;rsquo;t know what&amp;rsquo;s client-side template injection I invite you to take a look at those links [1][2]. Please note that this is my first write-up, I hope you&amp;rsquo;ll enjoy it.
+It all started when @berkanexo was telling me that he got listed on Hostinger Wall Of Fame so I decided to take a look at their website.</description>
+    </item>
+    
+  </channel>
+</rss>

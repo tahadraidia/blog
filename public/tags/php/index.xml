@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PHP on Taha Draidia</title>
+    <link>https://tahadraidia.com/tags/php/</link>
+    <description>Recent content in PHP on Taha Draidia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://tahadraidia.com/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mr Robot Vulnhub Challenge Walkthrough</title>
+      <link>https://tahadraidia.com/posts/mr-robot-boot2root-challenge/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/mr-robot-boot2root-challenge/</guid>
+      <description>I had some extra time this weekend so I decided to play Mr Robot hacking challenge. I heard a lot about that challenge but I didn&amp;rsquo;t have time to hack it. Now was the time. I downloaded the virtual machine image from vulnhub, fired up virtulbox, started kali linux vm.
+Enumeration time, I always start with port scanning to see what services are running but to do so I need to find the machine&amp;rsquo;s IP first.</description>
+    </item>
+    
+  </channel>
+</rss>

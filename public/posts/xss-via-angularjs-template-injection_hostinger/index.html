@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/highlight.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    
+    
+    <title>Taha Draidia | Reflective XSS via angularJS template injection - Hostinger</title>
+    <script src="/js/highlight.min.js"></script>
+    <script> hljs.initHighlightingOnLoad(); </script>
+</head><body>
+        
+        <div id="container" class="container">
+<span class="home_button"><a href="/">Back to home</a></span>
+<h2 class="note_title">
+<a href="/posts/xss-via-angularjs-template-injection_hostinger/" rel="bookmark"
+           title="Permalink to Reflective XSS via angularJS template injection - Hostinger">Reflective XSS via angularJS template injection - Hostinger</a></h2>
+
+
+<div class="note_info">
+        <div class="origin">
+            <strong>Created by:</strong><a href="https://twitter.com/tahadraidia">@tahadraidia</a> || <a href="https://tahadraidia.com">tahadraidia.com</a> 
+        </div>
+		<br />
+
+        <div class="published" title="2018-08-17 00:00:00 &#43;0000 UTC">
+            <strong>Published:</strong> <time datetime="2018-08-17">Aug 17, 2018</time>
+        </div>
+		<br />
+
+        <div class="tags" title="tags">
+        	
+        	<strong>Tags:</strong>
+        	
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/xss">XSS</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/javascript">Javascript</a>
+            
+            
+        </div>
+</div>
+
+<br>
+<h3 id="introduction">Introduction</h3>
+<p>This is a write-up of  an AngularJS Template Injection  I found in the main domain of Hostinger. If you don&rsquo;t know what&rsquo;s client-side template injection I invite you to take a look at those links <a href="https://portswigger.net/kb/issues/00200308_client-side-template-injection">[1]</a><a href="https://blog.portswigger.net/2016/01/xss-without-html-client-side-template.html">[2]</a>. Please note that this is my first write-up, I hope you&rsquo;ll enjoy it.</p>
+<p>It all started when <a href="https://twitter.com/berkanexo">@berkanexo</a> was telling me that he got listed on <a href="https://www.hostinger.com/wall-of-fame">Hostinger Wall Of Fame</a> so I decided to take a look at their website.</p>
+<h3 id="what-is-hostinger">What is Hostinger?</h3>
+<p>A world class web hosting platform. Who has a bug bounty program.</p>
+<h3 id="finding-the-vulnerability">Finding the vulnerability</h3>
+<p>While browsing their website the first thing I noticed is that they were using AngularJS for the front, I immediately opened the Javascript console to check what version they were using.</p>
+<p><img src="/images/angularVersion.png" alt="angularVersion">{:class=&ldquo;postImage&rdquo;}</p>
+<p>As we can see on the above image, they were using the <code>version 1.5.1</code>. I knew the existance of a payload for that version. The only thing left todo was to check if they were vulenrable to template injection. On the main page of the website was a form to find a unique domain.</p>
+<p><img src="/images/findDomain.png" alt="findDomainImage">{:class=&ldquo;postImage&rdquo;}</p>
+<p>I inserted the following: <code>toto{ { 4-2 } }</code> and the result was: <code>toto2</code> which mean they were vulnerable to template injection. It was not enough. I needed to proof that we can run javascript code.</p>
+<h3 id="exploitation">Exploitation</h3>
+<p>By inserting the following:<br>
+{% highlight javascript lineos %}
+toto{ {x = {&lsquo;y&rsquo;:''.constructor.prototype}; x[&lsquo;y&rsquo;].charAt=[].join;$eval(&lsquo;x=alert(document.domain)');} }
+{% endhighlight %}
+An alertbox should popup and should be accepted as a Proof Of Concept.</p>
+<h5 id="proof-of-concept--using-chrome">Proof of Concept  using Chrome:</h5>
+<p><img src="/images/Hostinger_chrome.png" alt="alertBox">{:class=&ldquo;postImage&rdquo;}</p>
+<h5 id="proof-of--concept-using-edge">Proof of  Concept using Edge:</h5>
+<p><img src="/images/Hostinger_edge.png" alt="alertBox">{:class=&ldquo;postImage&rdquo;}</p>
+<h3 id="timeline">Timeline</h3>
+<ul>
+<li>23/10/2017: Reported to Hostinger</li>
+<li>24/10/2017: Vulnerability Patched</li>
+<li>25/10/2017: Got my name on their Wall Of Fame</li>
+</ul>
+<p>Thanks for reading.</p>
+
+  <div class="contact">
+    <h2>Contact</h2>
+    Please feel free to ping me at <a href="https://twitter.com/tahadraidia">@tahadraidia</a>. Also you can see more of my work at <a href="https://tahadraidia.com">https://tahadraidia.com</a>.
+</div>
+</br> 
+        </div>
+        <script> hljs.initHighlightingOnLoad(); </script></body>
+</html>

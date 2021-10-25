@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Taha Draidia</title>
+    <link>https://tahadraidia.com/tags/</link>
+    <description>Recent content in Tags on Taha Draidia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://tahadraidia.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C</title>
+      <link>https://tahadraidia.com/tags/c/</link>
+      <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://tahadraidia.com/tags/python/</link>
+      <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://tahadraidia.com/tags/windows/</link>
+      <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Javascript</title>
+      <link>https://tahadraidia.com/tags/javascript/</link>
+      <pubDate>Tue, 05 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>XSS</title>
+      <link>https://tahadraidia.com/tags/xss/</link>
+      <pubDate>Tue, 05 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/tags/xss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cookies</title>
+      <link>https://tahadraidia.com/tags/cookies/</link>
+      <pubDate>Tue, 19 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/tags/cookies/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Injection</title>
+      <link>https://tahadraidia.com/tags/injection/</link>
+      <pubDate>Tue, 19 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/tags/injection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://tahadraidia.com/tags/linux/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PHP</title>
+      <link>https://tahadraidia.com/tags/php/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Clickjacking</title>
+      <link>https://tahadraidia.com/tags/clickjacking/</link>
+      <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/tags/clickjacking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CSP</title>
+      <link>https://tahadraidia.com/tags/csp/</link>
+      <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/tags/csp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DNS</title>
+      <link>https://tahadraidia.com/tags/dns/</link>
+      <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/tags/dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>security</title>
+      <link>https://tahadraidia.com/tags/security/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/tags/security/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/highlight.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    
+    
+    <title>Taha Draidia | Bypass Content Security Policy framing restriction rule - OLX</title>
+    <script src="/js/highlight.min.js"></script>
+    <script> hljs.initHighlightingOnLoad(); </script>
+</head><body>
+        
+        <div id="container" class="container">
+<span class="home_button"><a href="/">Back to home</a></span>
+<h2 class="note_title">
+<a href="/posts/bypass-csp-framing-restriction-rule-olx/" rel="bookmark"
+           title="Permalink to Bypass Content Security Policy framing restriction rule - OLX">Bypass Content Security Policy framing restriction rule - OLX</a></h2>
+
+
+<div class="note_info">
+        <div class="origin">
+            <strong>Created by:</strong><a href="https://twitter.com/tahadraidia">@tahadraidia</a> || <a href="https://tahadraidia.com">tahadraidia.com</a> 
+        </div>
+		<br />
+
+        <div class="published" title="2019-01-17 00:00:00 &#43;0000 UTC">
+            <strong>Published:</strong> <time datetime="2019-01-17">Jan 17, 2019</time>
+        </div>
+		<br />
+
+        <div class="tags" title="tags">
+        	
+        	<strong>Tags:</strong>
+        	
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/clickjacking">Clickjacking</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/csp">CSP</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/dns">DNS</a>
+            
+            
+        </div>
+</div>
+
+<br>
+<p>It&rsquo;s been a while since my last post. Today I decided to share with you a bug I found on a public bug bounty program on HackerOne. You can find the original report <a href="https://hackerone.com/reports/371980">here</a>.</p>
+<p>This post is about a misconfiguration in CSP rule that leaves the website vulnerable to UI redressing aka clickjacking. This attack is widly used by scammer and spammers to trick users.<br>
+After some recon on <em>olx.co.za</em> and <em>olx.com.gh</em> I noticed that both of them use the same CSP rule to restrict framing as you can see below:</p>
+<p><strong>olx.co.za:</strong></p>
+<p><img src="/images/csp_olx.co.za.png" alt="image"></p>
+<p><strong>olx.com.gh:</strong></p>
+<p><img src="/images/csp_olx.com.gh.png" alt="image"></p>
+<p>Let&rsquo;s take a closer look at it:</p>
+<pre><code>content-security-policy: frame-ancestors 'self' https://*.mod-tools.com:*
+</code></pre><p>Basically it says that you can only frame <em>olx.co.za</em>, <em>olx.com.gh</em> if your origin is a subdomain of <em>mod-tools.com</em> (using HTTPS only on any port).</p>
+<p>So my plan was:</p>
+<ul>
+<li>Subdomain Enumeration</li>
+<li>Seek for a subdomain takeover</li>
+<li>Write a proof of concept</li>
+</ul>
+<p>Before starting the above process, I settled on checking dns records of <em>mod-tools.com</em> and to my suprise the domain was unclaimed:</p>
+<pre><code>$ dig mod-tools.com 
+
+; &lt;&lt;&gt;&gt; DiG 9.10.3-P4-Ubuntu &lt;&lt;&gt;&gt; mod-tools.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NXDOMAIN, id: 11998
+;; flags: qr rd ra ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;mod-tools.com.         IN  A
+
+;; Query time: 1 msec
+;; SERVER: 127.0.1.1#53(127.0.1.1)
+;; WHEN: Thu Jun 28 10:34:33 CEST 2018
+;; MSG SIZE  rcvd: 31
+</code></pre><p>Wait what ?</p>
+<p><img src="/images/unclaimed_mod-tools.com.png" alt="claim_domain"></p>
+<p>Can we claim it ?</p>
+<p><img src="/images/claim_mod-tools.com.png" alt="claim_domain"></p>
+<p>The domain was available and we could claim it. I just submited the report without claiming it.</p>
+<p>Timeline:</p>
+<ul>
+<li>28/06/2018: submited report</li>
+<li>29/06/2018: triaged</li>
+<li>24/10/2018: resolved</li>
+<li>23/12/2018: disclosed</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>Always check CSP rules for misconfiguration</li>
+<li>Check assets used by CSP rules</li>
+<li>Sometimes you just only need a browser to find bugs on websites</li>
+</ul>
+<p>Thanks for reading</p>
+
+  <div class="contact">
+    <h2>Contact</h2>
+    Please feel free to ping me at <a href="https://twitter.com/tahadraidia">@tahadraidia</a>. Also you can see more of my work at <a href="https://tahadraidia.com">https://tahadraidia.com</a>.
+</div>
+</br> 
+        </div>
+        <script> hljs.initHighlightingOnLoad(); </script></body>
+</html>
