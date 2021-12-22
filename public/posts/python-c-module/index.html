@@ -76,7 +76,7 @@
 <li>CloseHandle</li>
 </ul>
 <p>The function takes a parameter and returns True if the file is a PE, False otherwise;</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">static</span> PyObject<span style="color:#f92672">*</span> <span style="color:#a6e22e">isValidPE</span>(PyObject <span style="color:#f92672">*</span>self, PyObject<span style="color:#f92672">*</span> args)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">static</span> PyObject<span style="color:#f92672">*</span> <span style="color:#a6e22e">isValidPE</span>(PyObject <span style="color:#f92672">*</span>self, PyObject<span style="color:#f92672">*</span> args)
 {
 	LPSTR pfile <span style="color:#f92672">=</span>  NULL;
 
@@ -154,7 +154,7 @@
 <li>Py_False (Python object that represents false)</li>
 </ul>
 <p>Now that we wrote the core functionality of the module, let&rsquo;s define our function using <code>PyMethodDef</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">static</span> PyMethodDef pevalidator_module_methods[] <span style="color:#f92672">=</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">static</span> PyMethodDef pevalidator_module_methods[] <span style="color:#f92672">=</span> {
     {<span style="color:#e6db74">&#34;isValidPE&#34;</span>, (PyCFunction)isValidPE, METH_VARARGS, <span style="color:#e6db74">&#34;This method checks if a file is  a valid PE.&#34;</span>},
     {NULL, NULL, <span style="color:#ae81ff">0</span>, NULL}
 };
@@ -165,7 +165,7 @@
 <li>The last parameter is a string used to represent the method docstring</li>
 </ul>
 <p>Next step is to define our module:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> PyModuleDef pevalidator_module <span style="color:#f92672">=</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> PyModuleDef pevalidator_module <span style="color:#f92672">=</span> {
     PyModuleDef_HEAD_INIT,
     <span style="color:#e6db74">&#34;pevalidator&#34;</span>,
     <span style="color:#e6db74">&#34;This module checks if a file is PE file.&#34;</span>,
@@ -180,7 +180,7 @@
 <li><strong>pevalidator_module_methods</strong> reference to the methods table, the one we defined earlier</li>
 </ul>
 <p>We are almost there! In order to build and import the module we will use <code>distrutils</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">from</span> distutils.core <span style="color:#f92672">import</span> setup, Extension
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">from</span> distutils.core <span style="color:#f92672">import</span> setup, Extension
 
 setup(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pevalidator&#34;</span>, version<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.0&#34;</span>, ext_modules<span style="color:#f92672">=</span>[Extension(<span style="color:#e6db74">&#39;pevalidator&#39;</span>,
     [<span style="color:#e6db74">&#39;pevalidator.c&#39;</span>])])
@@ -189,7 +189,7 @@ setup(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;p
 <li><strong>[&lsquo;pevalidator.c&rsquo;]</strong> list of sources files relative to <code>setup.py</code>.</li>
 </ul>
 <p>Here is how to build the module:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS C:\Users\tahai\code\python-c-module&gt; python .\setup.py build
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS C:\Users\tahai\code\python-c-module&gt; python .\setup.py build
 running build
 running build_ext
 building <span style="color:#e6db74">&#39;pevalidator&#39;</span> extension
@@ -205,7 +205,7 @@ Generating code
 Finished generating code
 PS C:\Users\tahai\code\python-c-module&gt;
 </code></pre></div><p>Before we can import and use the module we need to install the module as fellow:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS C:\Users\tahai\code\python-c-module&gt; python .\setup.py install
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS C:\Users\tahai\code\python-c-module&gt; python .\setup.py install
 running install
 running build
 running build_ext
@@ -216,7 +216,7 @@ Removing C:\Users\tahai\AppData\Local\Programs\Python\Python38-32\Lib\site-packa
 Writing C:\Users\tahai\AppData\Local\Programs\Python\Python38-32\Lib\site-packages\pevalidator-1.0-py3.8.egg-info
 PS C:\Users\tahai\code\python-c-module&gt;
 </code></pre></div><h2 id="in-action">In Action:</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS C:\Users\tahai\code\python-c-module&gt; python
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS C:\Users\tahai\code\python-c-module&gt; python
 Python 3.8.5 (tags/v3.8.5<span style="color:#960050;background-color:#1e0010">:</span>580fbb0, Jul 20 2020, 15<span style="color:#960050;background-color:#1e0010">:</span>43<span style="color:#960050;background-color:#1e0010">:</span>08) [MSC v.1926 32 bit (Intel)] on win32
 Type <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#e6db74">&#34;copyright&#34;</span>, <span style="color:#e6db74">&#34;credits&#34;</span> or <span style="color:#e6db74">&#34;license&#34;</span> <span style="color:#66d9ef">for</span> more information.
 &gt;&gt;&gt; import pevalidator as pev

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PEN200 on Taha Draidia</title>
+    <link>https://tahadraidia.com/tags/pen200/</link>
+    <description>Recent content in PEN200 on Taha Draidia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 25 Nov 2021 15:32:12 +0000</lastBuildDate><atom:link href="https://tahadraidia.com/tags/pen200/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build an Atomic Windows Lab</title>
+      <link>https://tahadraidia.com/posts/build-an-atomic-windows-lab/</link>
+      <pubDate>Thu, 25 Nov 2021 15:32:12 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/build-an-atomic-windows-lab/</guid>
+      <description>I have decided to build a Windows virtual machine to run some test scenarios with the goal to automate the repetitive tasks we encounter during an engagement.
+In the nutshell we are going to build a vulnerable Non-Domain Windows machine with different escalation paths including weak configuration service and Always Install Elevated enabled with some defenses on such as Windows Defender (LOL) and Powershell restricted language to make a bit challenging, or should I say interesting.</description>
+    </item>
+    
+  </channel>
+</rss>

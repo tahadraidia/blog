@@ -55,7 +55,7 @@ After some recon on <em>olx.co.za</em> and <em>olx.com.gh</em> I noticed that bo
 <p><strong>olx.com.gh:</strong></p>
 <p><img src="/images/csp_olx.com.gh.png" alt="image"></p>
 <p>Let&rsquo;s take a closer look at it:</p>
-<pre><code>content-security-policy: frame-ancestors 'self' https://*.mod-tools.com:*
+<pre tabindex="0"><code>content-security-policy: frame-ancestors 'self' https://*.mod-tools.com:*
 </code></pre><p>Basically it says that you can only frame <em>olx.co.za</em>, <em>olx.com.gh</em> if your origin is a subdomain of <em>mod-tools.com</em> (using HTTPS only on any port).</p>
 <p>So my plan was:</p>
 <ul>
@@ -64,7 +64,7 @@ After some recon on <em>olx.co.za</em> and <em>olx.com.gh</em> I noticed that bo
 <li>Write a proof of concept</li>
 </ul>
 <p>Before starting the above process, I settled on checking dns records of <em>mod-tools.com</em> and to my suprise the domain was unclaimed:</p>
-<pre><code>$ dig mod-tools.com 
+<pre tabindex="0"><code>$ dig mod-tools.com 
 
 ; &lt;&lt;&gt;&gt; DiG 9.10.3-P4-Ubuntu &lt;&lt;&gt;&gt; mod-tools.com
 ;; global options: +cmd

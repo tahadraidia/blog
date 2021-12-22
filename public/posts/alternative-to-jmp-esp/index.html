@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/highlight.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    
+    
+    <title>Taha Draidia | Alternative to JMP ESP Instruction</title>
+    <script src="/js/highlight.min.js"></script>
+    <script> hljs.initHighlightingOnLoad(); </script>
+</head><body>
+        
+        <div id="container" class="container">
+<span class="home_button"><a href="/">Back to home</a></span>
+<h2 class="note_title">
+<a href="/posts/alternative-to-jmp-esp/" rel="bookmark"
+           title="Permalink to Alternative to JMP ESP Instruction">Alternative to JMP ESP Instruction</a></h2>
+
+
+<div class="note_info">
+        <div class="origin">
+            <strong>Created by:</strong><a href="https://twitter.com/tahadraidia">@tahadraidia</a> || <a href="https://tahadraidia.com">tahadraidia.com</a> 
+        </div>
+		<br />
+
+        <div class="published" title="2021-12-12 13:34:28 &#43;0000 UTC">
+            <strong>Published:</strong> <time datetime="2021-12-12">Dec 12, 2021</time>
+        </div>
+		<br />
+
+        <div class="tags" title="tags">
+        	
+        	<strong>Tags:</strong>
+        	
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/assembly-x86">Assembly x86</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/assembly">Assembly</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/asm">ASM</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/x86">x86</a>
+            
+            
+        </div>
+</div>
+
+<br>
+<p>When it comes to vanilla buffer overflow, <code>JMP ESP</code> instruction is the one you look for when you got control over EIP register.</p>
+<p>Now let&rsquo;s assume that DEP is not enabled and due to ASLR and/or JMP ESP addresses contains bad characters, which make those address impossible to use.</p>
+<p>We can look for the following assembly instructions instead:</p>
+<ul>
+<li>PUSH ESP; RET (54C3)</li>
+</ul>
+<pre tabindex="0"><code>0:012&gt; u 77c73989
+ntdll!ResCDirectoryValidateEntries+0x1805:
+77c73989 54              push    esp
+77c7398a c3              ret
+</code></pre><ul>
+<li>CALL ESP; (FFD4)</li>
+</ul>
+<pre tabindex="0"><code>0:012&gt; u 77c77254
+ntdll!ResCDirectoryValidateEntries+0x50d0:
+77c77254 ffd4            call    esp
+</code></pre><p>Above instructions are an alternative to JMP ESP, whoever, it is important to note that creativity is the key here, it all depends on the restrictions you are facing and what other register/s you control and so on but once you can control EIP you can be creative on how to use gadgets to achieve your goal, think out of the box!</p>
+
+  <div class="contact">
+    <h2>Contact</h2>
+    Please feel free to ping me at <a href="https://twitter.com/tahadraidia">@tahadraidia</a>. Also you can see more of my work at <a href="https://tahadraidia.com">https://tahadraidia.com</a>.
+</div>
+</br> 
+        </div>
+        <script> hljs.initHighlightingOnLoad(); </script></body>
+</html>

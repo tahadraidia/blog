@@ -55,7 +55,7 @@
 </ul>
 <h2 id="natas-0">Natas 0</h2>
 <p>It says that we can find the password for the next level on the page, yet we don&rsquo;t see it, do we ? Right click anywhere on the page and view the page, you should notice a comment as below:</p>
-<pre><code>...
+<pre tabindex="0"><code>...
 &lt;!--The password for natas1 is gtVrDuiDfck831PqWsLEZy5gyDz1clto --&gt;
 ...
 </code></pre><h2 id="natas-1">Natas 1</h2>
@@ -67,12 +67,12 @@
 <li>Use Curl.</li>
 <li>&hellip;</li>
 </ul>
-<pre><code>...
+<pre tabindex="0"><code>...
 &lt;!--The password for natas2 is ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi --&gt;
 ...
 </code></pre><h2 id="natas-2">Natas 2</h2>
 <p>It says there&rsquo;s nothing on this page, when we view the code source we see:</p>
-<pre><code>...
+<pre tabindex="0"><code>...
 &lt;h1&gt;natas2&lt;/h1&gt;
 &lt;div id=&quot;content&quot;&gt;
 There is nothing on this page
@@ -80,7 +80,7 @@ There is nothing on this page
 &lt;/div&gt;
 ...
 </code></pre><p>There is an image <em>pixel.png</em> inside files directory, if we look at that directory we notice a file called users.txt:</p>
-<pre><code># username:password
+<pre tabindex="0"><code># username:password
 alice:BYNdCesZqW
 bob:jw2ueICLvT
 charlie:G5vCxkVV3m
@@ -89,15 +89,15 @@ eve:zo4mJWyNj2
 mallory:9urtcpzBmH
 </code></pre><h2 id="natas-3">Natas 3</h2>
 <p>Same message, we view source code we notice this comment:</p>
-<pre><code>&lt;!-- No more information leaks!! Not even Google will find it this time... --&gt;
+<pre tabindex="0"><code>&lt;!-- No more information leaks!! Not even Google will find it this time... --&gt;
 </code></pre><p>Hmm, smells like we need to use Google Dork:</p>
-<pre><code>site:natas3.natas.labs.overthewire.org
+<pre tabindex="0"><code>site:natas3.natas.labs.overthewire.org
 </code></pre><p><img src="/images/overthewire_natas/natas3.png" alt="natas3"></p>
 <p>Inside s3cr3t directory there&rsquo;s a users.txt file containing the password for the next level:</p>
-<pre><code>natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
+<pre tabindex="0"><code>natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
 </code></pre><h2 id="natas-4">Natas 4</h2>
 <p>It says Access disallowed. You are visiting from &quot;&quot; while authorized users should come only from &ldquo;<a href="http://natas5.natas.labs.overthewire.org/%22">http://natas5.natas.labs.overthewire.org/&quot;</a>. We can bypass this by sending <code>Referer HTTP HEADER</code> containing: <code>http://natas5.natas.labs.overthewire.org/</code>:</p>
-<pre><code> curl http://natas4.natas.labs.overthewire.org/ -H &quot;Referer: http://natas5.natas.labs.overthewire.org/&quot; -H &quot;Authorization: Basic bmF0YXM0Olo5dGtSa1dtcHQ5UXI3WHJSNWpXUmtnT1U5MDFzd0Va&quot;
+<pre tabindex="0"><code> curl http://natas4.natas.labs.overthewire.org/ -H &quot;Referer: http://natas5.natas.labs.overthewire.org/&quot; -H &quot;Authorization: Basic bmF0YXM0Olo5dGtSa1dtcHQ5UXI3WHJSNWpXUmtnT1U5MDFzd0Va&quot;
 </code></pre><p><img src="/images/overthewire_natas/natas4.png" alt="natas4"></p>
 <p>Password: <code>iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq</code></p>
 <h2 id="natas-5">Natas 5</h2>
@@ -108,7 +108,7 @@ mallory:9urtcpzBmH
 <p>Password for natas 6: <code>aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1</code></p>
 <h2 id="natas-6">Natas 6</h2>
 <p>This time we are facing a password form and we have access the source code by clicking on View source code link:</p>
-<pre><code>...
+<pre tabindex="0"><code>...
 &lt;?
 
 include &quot;includes/secret.inc&quot;;
@@ -128,13 +128,13 @@ Input secret: &lt;input name=secret&gt;&lt;br&gt;
 &lt;/form&gt;
 ...
 </code></pre><p>As you can see there is <code>secret.inc</code> file inside includes directory:</p>
-<pre><code>&lt;?
+<pre tabindex="0"><code>&lt;?
 $secret = &quot;FOEIUWGHFEEUHOFUOIU&quot;;
 ?&gt;
 </code></pre><p>By inserting above password we get the next level password: <code>7z3hEENjQtflzgnT29q7wAvMNfZdh0i9</code></p>
 <h2 id="natas-7">Natas 7</h2>
 <p>We have two links home and about, we view the source code of the page:</p>
-<pre><code>...
+<pre tabindex="0"><code>...
 &lt;body&gt;
 &lt;h1&gt;natas7&lt;/h1&gt;
 &lt;div id=&quot;content&quot;&gt;
@@ -153,7 +153,7 @@ $secret = &quot;FOEIUWGHFEEUHOFUOIU&quot;;
 <p>Password for the next leve: <code>DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe</code></p>
 <h2 id="natas-8">Natas 8</h2>
 <p>I like this one, we have a form and we got access to it source code:</p>
-<pre><code>...
+<pre tabindex="0"><code>...
 &lt;?
 
 $encodedSecret = &quot;3d3d516343746d4d6d6c315669563362&quot;;
@@ -173,9 +173,9 @@ if(array_key_exists(&quot;submit&quot;, $_POST)) {
 ...
 </code></pre><p>We need to match <code>encodedSecret</code> variable and to do so we first need to revert the process of <code>encodeSecret</code>.</p>
 <p>Here is what <code>encodeSecret</code> function does:</p>
-<pre><code>take user input (string) -&gt; base64 encode input -&gt; revert base64 encoded string -&gt; Returns an ASCII string containing the hexadecimal representation of string 
+<pre tabindex="0"><code>take user input (string) -&gt; base64 encode input -&gt; revert base64 encoded string -&gt; Returns an ASCII string containing the hexadecimal representation of string 
 </code></pre><p>This is what we need to do:</p>
-<pre><code>take encodedSecret as input -&gt; hex2bin -&gt; revert string -&gt; base64 decode string 
+<pre tabindex="0"><code>take encodedSecret as input -&gt; hex2bin -&gt; revert string -&gt; base64 decode string 
 </code></pre><p>POC:</p>
 <p><img src="/images/overthewire_natas/natas8_0.png" alt="natas8"></p>
 <p>Form&rsquo;s password: <code>oubWYf2kBq</code></p>
@@ -183,7 +183,7 @@ if(array_key_exists(&quot;submit&quot;, $_POST)) {
 <p>Next level password: <code>W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl</code></p>
 <h2 id="natas-9">Natas 9</h2>
 <p>This time we have a search and we have access to the source code:</p>
-<pre><code>...
+<pre tabindex="0"><code>...
 &lt;?
 $key = &quot;&quot;;
 
@@ -202,7 +202,7 @@ if($key != &quot;&quot;) {
 <p>Next level password: <code>nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu</code></p>
 <h2 id="natas-10">Natas 10</h2>
 <p>Similar to the previous level but this time the developer filtered some characters using regex:</p>
-<pre><code>...
+<pre tabindex="0"><code>...
 if(preg_match('/[;|&amp;]/',$key)) {
         print &quot;Input contains an illegal character!&quot;;
     } else {
@@ -212,11 +212,11 @@ if(preg_match('/[;|&amp;]/',$key)) {
 </code></pre><p>Unfortunately the last approach won&rsquo;t work here, we need to see this from a different angle, <code>$key</code>&rsquo;s value is reflected as a parameter to grep command, if we take a look at the man of grep:</p>
 <p><img src="/images/overthewire_natas/natas10_00.png" alt="natas10"></p>
 <p>In PHP code the grep command is invoked in this form:</p>
-<pre><code>grep [OPTIONS] PATTERN [FILE]
+<pre tabindex="0"><code>grep [OPTIONS] PATTERN [FILE]
 </code></pre><p>We already know that we control the <code>key</code> variable, we can use it to pass <code>PATTERN</code> and <code>FILE</code> parameter to <code>grep</code>. By brute forcing PATTERN parameter (looking for existent character in the password) and passing <code>/etc/natas_webpass/natas11</code> as FILE parameter we can obtain natas11&rsquo;s password.</p>
 <p><img src="/images/overthewire_natas/natas10.png" alt="natas10"></p>
 <p>We can do much better, let&rsquo;s append our injection with <code>%23</code> which is the url encoded value of <code>#</code>. In bash <code>#</code> is used for comments, so by inserting <code>#</code> at the end of the command we ignore <code>dictionary.txt</code> Hence, we got a clean output which make it easy for us to create a script to brute force.</p>
-<pre><code>#!/bin§bash
+<pre tabindex="0"><code>#!/bin§bash
 
 AUTH=&quot;Authorization: Basic bmF0YXMxMDpuT3BwMWlnUUFrVXphSTFHVVVqem4xYkZWajd4Q056dQ==&quot;
 

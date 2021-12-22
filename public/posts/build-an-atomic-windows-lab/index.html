@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/highlight.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    
+    
+    <title>Taha Draidia | Build an Atomic Windows Lab</title>
+    <script src="/js/highlight.min.js"></script>
+    <script> hljs.initHighlightingOnLoad(); </script>
+</head><body>
+        
+        <div id="container" class="container">
+<span class="home_button"><a href="/">Back to home</a></span>
+<h2 class="note_title">
+<a href="/posts/build-an-atomic-windows-lab/" rel="bookmark"
+           title="Permalink to Build an Atomic Windows Lab">Build an Atomic Windows Lab</a></h2>
+
+
+<div class="note_info">
+        <div class="origin">
+            <strong>Created by:</strong><a href="https://twitter.com/tahadraidia">@tahadraidia</a> || <a href="https://tahadraidia.com">tahadraidia.com</a> 
+        </div>
+		<br />
+
+        <div class="published" title="2021-11-25 15:32:12 &#43;0000 UTC">
+            <strong>Published:</strong> <time datetime="2021-11-25">Nov 25, 2021</time>
+        </div>
+		<br />
+
+        <div class="tags" title="tags">
+        	
+        	<strong>Tags:</strong>
+        	
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/osep">OSEP</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/pen300">PEN300</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/pen200">PEN200</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/oscp">OSCP</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/windows">Windows</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/privilege-escalation">Privilege Escalation</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/powershell">Powershell</a>
+            
+            
+        </div>
+</div>
+
+<br>
+<p>I have decided to build a Windows virtual machine to run some test scenarios with the goal to automate the repetitive tasks we encounter during an engagement.</p>
+<p>In the nutshell we are going to build a vulnerable Non-Domain Windows machine with different escalation paths including weak configuration service and Always Install Elevated enabled with some defenses on such as Windows Defender (LOL) and Powershell restricted language to make a bit challenging, or should I say interesting.</p>
+<p>In order to facilitate the construction and deconstruction of the environment, I have wrote the following tiny Powershell script.</p>
+<p><a href="https://gist.github.com/tahadraidia/23f44acaf57b7a51b095edcd1d0975e8">https://gist.github.com/tahadraidia/23f44acaf57b7a51b095edcd1d0975e8</a></p>
+<p>Note that admin rights are required obviously, also once we have executed Install-Environment(), we cannot use the script in a new created Powershell session due to the Restricted Language mode. However, we can still leverage InstallUtils and Powershell Runspace among other things to execute the script.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://www.winhelponline.com/blog/view-edit-service-permissions-windows/">https://www.winhelponline.com/blog/view-edit-service-permissions-windows/</a></li>
+<li><a href="https://www.hackingarticles.in/windows-privilege-escalation-alwaysinstallelevated/">https://www.hackingarticles.in/windows-privilege-escalation-alwaysinstallelevated/</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/framework/tools/installutil-exe-installer-tool">https://docs.microsoft.com/en-us/dotnet/framework/tools/installutil-exe-installer-tool</a></li>
+<li><a href="https://docs.microsoft.com/en-us/powershell/scripting/developer/hosting/windows-powershell-host-quickstart?view=powershell-7.2">https://docs.microsoft.com/en-us/powershell/scripting/developer/hosting/windows-powershell-host-quickstart?view=powershell-7.2</a></li>
+</ul>
+
+  <div class="contact">
+    <h2>Contact</h2>
+    Please feel free to ping me at <a href="https://twitter.com/tahadraidia">@tahadraidia</a>. Also you can see more of my work at <a href="https://tahadraidia.com">https://tahadraidia.com</a>.
+</div>
+</br> 
+        </div>
+        <script> hljs.initHighlightingOnLoad(); </script></body>
+</html>

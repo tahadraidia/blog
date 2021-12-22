@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTA on Taha Draidia</title>
+    <link>https://tahadraidia.com/tags/hta/</link>
+    <description>Recent content in HTA on Taha Draidia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 04 Dec 2021 11:25:46 +0000</lastBuildDate><atom:link href="https://tahadraidia.com/tags/hta/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Don&#39;t Go Phishing Blind, Watch While RunTime</title>
+      <link>https://tahadraidia.com/posts/dont-go-phising-blind-watch-while-execution/</link>
+      <pubDate>Sat, 04 Dec 2021 11:25:46 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/dont-go-phising-blind-watch-while-execution/</guid>
+      <description>Raise your hand if you crafted well your payload and the payload worked well in your lab machines but in the real scenario you&amp;rsquo;re not receiving the callback! I guess all of us at some point have experienced this.
+To solve this I wrote a simple and yet effective set of functions that allow us to see what going on while the runtime of our script.
+The first function/subroutine, which I called hello simply sends an GET request to a specified server.</description>
+    </item>
+    
+  </channel>
+</rss>

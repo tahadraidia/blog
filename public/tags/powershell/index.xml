@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Powershell on Taha Draidia</title>
+    <link>https://tahadraidia.com/tags/powershell/</link>
+    <description>Recent content in Powershell on Taha Draidia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Dec 2021 09:48:14 +0000</lastBuildDate><atom:link href="https://tahadraidia.com/tags/powershell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Identify Weak Service Configuration With One Liner of Powershell</title>
+      <link>https://tahadraidia.com/posts/identify-weak-service-configuration-with-oneliner-of-powershell/</link>
+      <pubDate>Fri, 03 Dec 2021 09:48:14 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/identify-weak-service-configuration-with-oneliner-of-powershell/</guid>
+      <description>One of the features of PEN300 MSF script is lazy privilege escalation, it checks for few common excessive permissions and lack of configuration in certain component of the box.
+The missing part was how to identify weak service configuration? the approach was already known, however how to achieve it using MSF Ruby API or Win32 API seemed doomed. MSF Windows Services class relies on sc_manager, this won&amp;rsquo;t work with low privileged user.</description>
+    </item>
+    
+    <item>
+      <title>Automate the Reconnaissance Phase</title>
+      <link>https://tahadraidia.com/posts/automate-the-reconnaissance-phase/</link>
+      <pubDate>Thu, 02 Dec 2021 07:43:03 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/automate-the-reconnaissance-phase/</guid>
+      <description>If you have been reading my OSEP (PEN300) post series, you know that I love automating things, reconnaissance phase is one of the repetitive tasks that you do for each machine you compromise right.
+In this post, I am going to share with you how I took advantage of the existing scripts and tools to create let&amp;rsquo;s say a reconnaissance script bundle.
+The script is written into Powershell, the language has a rich API and special when it allow us to load .</description>
+    </item>
+    
+    <item>
+      <title>Make SharpRDP a .NET Assembly Loadable</title>
+      <link>https://tahadraidia.com/posts/make-sharprdp-an-assembly-loadable/</link>
+      <pubDate>Mon, 29 Nov 2021 07:21:19 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/make-sharprdp-an-assembly-loadable/</guid>
+      <description>SharpRDP in a neat tool when it comes to get a command execution via RDP protocol, The project is written in C# .NET, which makes perfect to leverage .NET Assembly, however, in order to load an assembly the binary needs to expose the API and in this case SharpRDP is build in away that it can only be in traditional way.
+If we look at the source code of the project on github, we can clearly see that Program class has internal attributes and the two methods have private attribute.</description>
+    </item>
+    
+    <item>
+      <title>A Class Helper for Metasploit Powershell Extension</title>
+      <link>https://tahadraidia.com/posts/write-a-class-helper-for-metasploit-powershell-extension/</link>
+      <pubDate>Sun, 28 Nov 2021 15:43:16 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/write-a-class-helper-for-metasploit-powershell-extension/</guid>
+      <description>Three weeks ago or so I started writing a MSF script that automates repeated tasks such running reconnaissance scripts, dumping credentials, listing tokens that could be impersonated and so on.
+The current script does all what I have listed above among other things, however, some part of the code generates Powershell cradles and executes Powershell commands, I would say that this is not an elegant way to do it.
+For instance, here are two examples where I run Powershell commands:</description>
+    </item>
+    
+    <item>
+      <title>Build an Atomic Windows Lab</title>
+      <link>https://tahadraidia.com/posts/build-an-atomic-windows-lab/</link>
+      <pubDate>Thu, 25 Nov 2021 15:32:12 +0000</pubDate>
+      
+      <guid>https://tahadraidia.com/posts/build-an-atomic-windows-lab/</guid>
+      <description>I have decided to build a Windows virtual machine to run some test scenarios with the goal to automate the repetitive tasks we encounter during an engagement.
+In the nutshell we are going to build a vulnerable Non-Domain Windows machine with different escalation paths including weak configuration service and Always Install Elevated enabled with some defenses on such as Windows Defender (LOL) and Powershell restricted language to make a bit challenging, or should I say interesting.</description>
+    </item>
+    
+  </channel>
+</rss>

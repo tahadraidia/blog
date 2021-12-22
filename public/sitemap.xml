@@ -3,8 +3,128 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://tahadraidia.com/posts/</loc>
-    <lastmod>2020-10-04T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-12T13:34:28+00:00</lastmod>
     <priority>0</priority>
+  </url><url>
+    <loc>https://tahadraidia.com/posts/alternative-to-jmp-esp/</loc>
+    <lastmod>2021-12-12T13:34:28+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/asm/</loc>
+    <lastmod>2021-12-12T13:34:28+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/assembly/</loc>
+    <lastmod>2021-12-12T13:34:28+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/assembly-x86/</loc>
+    <lastmod>2021-12-12T13:34:28+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/categories/</loc>
+    <lastmod>2021-12-12T13:34:28+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/categories/exploit-development/</loc>
+    <lastmod>2021-12-12T13:34:28+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/categories/security/</loc>
+    <lastmod>2021-12-12T13:34:28+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/</loc>
+    <lastmod>2021-12-12T13:34:28+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/</loc>
+    <lastmod>2021-12-12T13:34:28+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/x86/</loc>
+    <lastmod>2021-12-12T13:34:28+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/posts/dont-go-phising-blind-watch-while-execution/</loc>
+    <lastmod>2021-12-04T11:25:46+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/hta/</loc>
+    <lastmod>2021-12-04T11:25:46+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/http/</loc>
+    <lastmod>2021-12-04T11:25:46+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/osep/</loc>
+    <lastmod>2021-12-04T11:25:46+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/pen300/</loc>
+    <lastmod>2021-12-04T11:25:46+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/categories/programming/</loc>
+    <lastmod>2021-12-04T11:25:46+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/vba/</loc>
+    <lastmod>2021-12-04T11:25:46+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/vbs/</loc>
+    <lastmod>2021-12-04T11:25:46+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/posts/identify-weak-service-configuration-with-oneliner-of-powershell/</loc>
+    <lastmod>2021-12-03T09:48:14+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/metasploit/</loc>
+    <lastmod>2021-12-03T09:48:14+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/powershell/</loc>
+    <lastmod>2021-12-03T09:48:14+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/privilege-escalation/</loc>
+    <lastmod>2021-12-03T09:48:14+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/ruby/</loc>
+    <lastmod>2021-12-03T09:48:14+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/.net-assembly/</loc>
+    <lastmod>2021-12-02T07:43:03+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/posts/automate-the-reconnaissance-phase/</loc>
+    <lastmod>2021-12-02T07:43:03+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/c#/</loc>
+    <lastmod>2021-12-02T07:43:03+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/posts/added-runasppl-check-to-our-pen300-msf-script/</loc>
+    <lastmod>2021-12-01T10:21:33+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/hash_dump/</loc>
+    <lastmod>2021-12-01T10:21:33+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/mimikatz/</loc>
+    <lastmod>2021-12-01T10:21:33+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/.net/</loc>
+    <lastmod>2021-12-01T04:32:52+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/resource-stream/</loc>
+    <lastmod>2021-12-01T04:32:52+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/posts/taking-advantage-of-assembly.getmanifestresourcestream-for-quick-dirt-hacks/</loc>
+    <lastmod>2021-12-01T04:32:52+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/posts/make-sharprdp-an-assembly-loadable/</loc>
+    <lastmod>2021-11-29T07:21:19+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/reverse-engineer/</loc>
+    <lastmod>2021-11-29T07:21:19+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/posts/write-a-class-helper-for-metasploit-powershell-extension/</loc>
+    <lastmod>2021-11-28T15:43:16+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/anti-virus/</loc>
+    <lastmod>2021-11-28T15:43:16+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/posts/build-an-atomic-windows-lab/</loc>
+    <lastmod>2021-11-25T15:32:12+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/oscp/</loc>
+    <lastmod>2021-11-25T15:32:12+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/pen200/</loc>
+    <lastmod>2021-11-25T15:32:12+00:00</lastmod>
+  </url><url>
+    <loc>https://tahadraidia.com/tags/windows/</loc>
+    <lastmod>2021-11-25T15:32:12+00:00</lastmod>
   </url><url>
     <loc>https://tahadraidia.com/tags/c/</loc>
     <lastmod>2020-10-04T00:00:00+00:00</lastmod>
@@ -13,15 +133,6 @@
     <lastmod>2020-10-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://tahadraidia.com/tags/python/</loc>
-    <lastmod>2020-10-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://tahadraidia.com/tags/</loc>
-    <lastmod>2020-10-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://tahadraidia.com/</loc>
-    <lastmod>2020-10-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://tahadraidia.com/tags/windows/</loc>
     <lastmod>2020-10-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://tahadraidia.com/tags/javascript/</loc>
@@ -69,13 +180,7 @@
     <loc>https://tahadraidia.com/posts/xss-via-angularjs-template-injection_hostinger/</loc>
     <lastmod>2018-08-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://tahadraidia.com/categories/</loc>
-    <lastmod>2017-12-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://tahadraidia.com/posts/git-init-blog/</loc>
-    <lastmod>2017-12-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://tahadraidia.com/categories/security/</loc>
     <lastmod>2017-12-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://tahadraidia.com/tags/security/</loc>
