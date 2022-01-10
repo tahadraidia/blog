@@ -1,5 +1,5 @@
 ---
-title: "Taking Advantage of Assembly.GetManifestResourceStream for Quick Dirt Hacks"
+title: "Taking Advantage of Assembly.GetManifestResourceStream for Quick Dirty Hacks"
 date: 2021-12-01T04:32:52Z
 categories: ["Programming", "Security"]
 tags: ["OSEP", "PEN300", "C#", ".NET", "Resource Stream"]
