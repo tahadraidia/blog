@@ -32,7 +32,7 @@ Exception raised: integer division or modulo by zero
 >>>
 ```
 
-Nice! we caught an exception, however, this is a generic as the name says `Exception`, the exception was not precise or specific. Because we are dealing with divisions we can say the program, needs to raise an exception if division by zero instance occurred but the program needs to keep running. 
+Nice! we caught an exception, however, this is a generic as the name says `Exception`, the exception was not precise or specific. Because we are dealing with divisions we can say the program, needs to raise an exception if division by zero instance occurred but the program needs to keep running.
 
 To resolve this we can use `ZeroDivisonError` exception instead of Exception right.
 
@@ -46,7 +46,7 @@ Zero Divison Error spotted: integer division or modulo by zero
 >>>
 ```
 
-This works, we isolated the case of zero division but what happens if another type of error raises within the same try/except block? Let us say that an error occurs just before zero division one. 
+This works, we isolated the case of zero division but what happens if another type of error raises within the same try/except block? Let us say that an error occurs just before zero division one.
 
 ```python
 >>> try:
@@ -61,8 +61,8 @@ NameError: name 'pint' is not defined
 >>>
 ```
 
-Well, it goes unhandled by our program but the system still catches it but the program crashed. 
-In this case `NameError` was raised because we have misspelled `print()` function. In order to illustrate the idea that the system can encounter nested exception and exceptions are stored in a list we are going to arise an exception that the system cannot handle. 
+Well, it goes unhandled by our program but the system still catches it but the program crashed.
+In this case `NameError` was raised because we have misspelled `print()` function. In order to illustrate the idea that the system can encounter nested exception and exceptions are stored in a list we are going to arise an exception that the system cannot handle.
 
 ```python
 >>> try:
@@ -81,9 +81,9 @@ Traceback (most recent call last):
 NameError: name 'e' is not defined
 ```
 
-Notice this message down below: 
+Notice this message down below:
 
-```
+```python
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
@@ -91,13 +91,13 @@ Traceback (most recent call last):
 NameError: name 'e' is not defined
 ```
 
-Not bad, this shows that the system can catch nested exceptions, now is the time to go through some definitions, until now we have dealt with only software exceptions, as the name says you can guess the opponent exception which, is hardware exception, which are initiated by the CPU. This could occurs when a program tries to read from a no valid memory address for example. 
+Not bad, this shows that the system can catch nested exceptions, now is the time to go through some definitions, until now we have dealt with only software exceptions, as the name says you can guess the opponent exception which, is hardware exception, which are initiated by the CPU. This could occurs when a program tries to read from a no valid memory address for example.
 
-Now that we now the types of exceptions, what we need to know is that they work at thread level, which means we can found information of those exception in the Thread Environment Block structure of Windows. 
+Now that we now the types of exceptions, what we need to know is that they work at thread level, which means we can found information of those exception in the Thread Environment Block structure of Windows.
 
 Let us open notepad (x86 version) within windbg and set a break point at the entry, so we can exam the structure.
 
-```
+```nasm
 0:000> bp $exentry
 0:000> g
 ModLoad: 77090000 770b5000   C:\WINDOWS\SysWOW64\IMM32.DLL
@@ -111,7 +111,7 @@ notepad!wWinMainCRTStartup:
 
 Using `dt` we can examine `TEB` structure in Windbg.
 
-```
+```nasm
 0:000> dt _TEB
 ntdll!_TEB
    +0x000 NtTib            : _NT_TIB
@@ -145,7 +145,7 @@ ntdll!_TEB
 
 The first field is the one that interests us, `NtTib` at offset `0x00` is a structure of type `_NT_TIB` we can use dt command again examine that structure.
 
-```
+```nasm
 0:000> dt _NT_TIB
 ntdll!_NT_TIB
    +0x000 ExceptionList    : Ptr32 _EXCEPTION_REGISTRATION_RECORD
@@ -160,18 +160,18 @@ ntdll!_NT_TIB
 
 ExceptionList is the first element of the structure, that's the one we are looking for, the type of the structure is `_EXCEPTION_REGISTRATION_RECORD`.
 
-```
+```nasm
 0:000> dt _EXCEPTION_REGISTRATION_RECORD
 ntdll!_EXCEPTION_REGISTRATION_RECORD
    +0x000 Next             : Ptr32 _EXCEPTION_REGISTRATION_RECORD
-   +0x004 Handler          : Ptr32     _EXCEPTION_DISPOSITION 
+   +0x004 Handler          : Ptr32     _EXCEPTION_DISPOSITION
 ```
 
-This is a singled linked list of `_EXCEPTION_REGISTRATION_RECORD`, as the first member (Next) points to the next exception_registration_record struct, the end of the list is defined with the value `-1` in hex.  
+This is a singled linked list of `_EXCEPTION_REGISTRATION_RECORD`, as the first member (Next) points to the next exception_registration_record struct, the end of the list is defined with the value `-1` in hex.
 
 The second member (Handler) is a pointer to the exception call back function named `_exception_handler`, this returns `_EXCEPTION_DISPOSITION` enum.
 
-```
+```nasm
 0:000> dt _EXCEPTION_DISPOSITION
 ntdll!_EXCEPTION_DISPOSITION
    ExceptionContinueExecution = 0n0
@@ -200,9 +200,9 @@ We can find `_EXCEPTION_DISPOSITION` enum declaration at line 18.
  25 } EXCEPTION_DISPOSITION;
  ...
  ```
- 
- If we scroll down to line 29 we find `_except_handler` function decorator. 
- 
+
+ If we scroll down to line 29 we find `_except_handler` function decorator.
+
  ```C
  ...
  29 // SEH handler
@@ -236,9 +236,9 @@ We can find `_EXCEPTION_DISPOSITION` enum declaration at line 18.
  57 #endif
  ...
  ```
- 
- We will focus on the x86 implementation, since we are dealing with x86 Assembly for now. 
- 
+
+ We will focus on the x86 implementation, since we are dealing with x86 Assembly for now.
+
  ```C
  ...
  30 #ifdef _M_IX86
@@ -255,13 +255,13 @@ We can find `_EXCEPTION_DISPOSITION` enum declaration at line 18.
  41
  42 #elif defined _M_X64 || defined _M_ARM || defined _M_ARM64
  ...
- 
+
  ```
- 
- The function takes four parameters, two in and other out. for us `_EstablisherFrame` and `_ContextRecord` are the ones that interest us. 
- 
+
+ The function takes four parameters, two in and other out. for us `_EstablisherFrame` and `_ContextRecord` are the ones that interest us.
+
  EtablisherFrame points to the `_Exceptation_Regeistration_Record` structure, ContextRecord a Context structure is very interesting, this structure contains assembly registers such as EIP and so on.
- 
+
  ```C
  0:000> dt _CONTEXT
 ntdll!_CONTEXT
@@ -291,10 +291,10 @@ ntdll!_CONTEXT
    +0x0c8 SegSs            : Uint4B
    +0x0cc ExtendedRegisters : [512] UChar
  ```
- 
+
 Now that we had a tiny grasp of SEH implementation, let us list list of exception of the current process using Windbg command/extension called `exchain`.
 
-```
+```nasm
 0:000> !exchain
 0047fdbc: ntdll!_except_handler4+0 (7714ad40)
   CRT scope  0, filter: ntdll!__RtlUserThreadStart+3cdb8 (77174827)
@@ -310,7 +310,7 @@ Notice `Invalid exceptiion stack at fffffff`, this marks the end of ExceptionLis
 
 We can confirm that by manually walking through ExceptionList using the memory address given by the command above but before we do that let us confirm the ExceptionList using `teb` extension.
 
-```
+```nasm
 0:000> !teb
 TEB at 00207000
     ExceptionList:        0047fdbc
@@ -334,13 +334,13 @@ TEB at 00207000
 
 The address of ExceptionList matches the one we got from `!exchain`, let us go further and investigate.
 
-```
+```nasm
 0:000> dt _nt_tib 0047fdbc
 ntdll!_NT_TIB
    +0x000 ExceptionList    : 0x0047fdd4 _EXCEPTION_REGISTRATION_RECORD
    +0x004 StackBase        : 0x7714ad40 Void
    +0x008 StackLimit       : 0x89b0af72 Void
-   +0x00c SubSystemTib     : (null) 
+   +0x00c SubSystemTib     : (null)
    +0x010 FiberData        : 0x0047fddc Void
    +0x010 Version          : 0x47fddc
    +0x014 ArbitraryUserPointer : 0x77137a6e Void
@@ -349,8 +349,8 @@ ntdll!_NT_TIB
 
 We know that ExceptionList is a singled linked list of `_EXCEPTION_REGISTRATION_RECORD`, next we take the pointer of the structure inspect it with `dt`.
 
-```
-0:000> dt _EXCEPTION_REGISTRATION_RECORD 0x0047fdd4 
+```nasm
+0:000> dt _EXCEPTION_REGISTRATION_RECORD 0x0047fdd4
 ntdll!_EXCEPTION_REGISTRATION_RECORD
    +0x000 Next             : 0xffffffff _EXCEPTION_REGISTRATION_RECORD
    +0x004 Handler          : 0x77158a39     _EXCEPTION_DISPOSITION  ntdll!FinalExceptionHandlerPad9+0
@@ -358,7 +358,7 @@ ntdll!_EXCEPTION_REGISTRATION_RECORD
 ```
 Nice! Next member points to `0xffffffff`, which, means the end of the list as shown in `!exchain` command.
 
-```
+```nasm
 0:000> !exchain
 0047fdbc: ntdll!_except_handler4+0 (7714ad40)
   CRT scope  0, filter: ntdll!__RtlUserThreadStart+3cdb8 (77174827)
@@ -371,7 +371,7 @@ Notice the Handler pointer address match as well, I think we gain a bit more und
 
 Next, we are going to write a tiny assembly program in FASM that prints the address of the ExceptionList, StackBase and StackLimit for the fun and profile (Mostly to reinforce our understanding in the subject).
 
-```as
+```nasm
 ...
  18 start:
  19         xor edx,edx
@@ -404,19 +404,19 @@ Next, we are going to write a tiny assembly program in FASM that prints the addr
 
 The code is quite compact, it starts by null out edx,ebx and ecx registers respectively then copies the address of ExceptionList ot ecx register by accessing FS segment register at offset 0x00.
 
-```as
+```nasm
 	xor edx,edx
 	xor ebx,ebx
 	xor ecx,ecx
 
-	mov ecx,[fs:ecx] ; ecx holds ExceptionList	
+	mov ecx,[fs:ecx] ; ecx holds ExceptionList
 	push ecx ; save it for later
 	PrintPointer ecx,exception_address_string
 
 ```
 Then it pushes ecx to the stack to save it for later on, after that we just print the address of ExceptionList using a custom macro called PrintPointer.
 
-```
+```nasm
 macro PrintPointer reg,string
 {
 	xor eax,eax
@@ -425,11 +425,11 @@ macro PrintPointer reg,string
 }
 ```
 
-The macro is quite simple, it starts by zeroing out eax register, then copies a DWORD from what string variable contains to eax register and finally calls printfs function with reg. 
+The macro is quite simple, it starts by zeroing out eax register, then copies a DWORD from what string variable contains to eax register and finally calls printfs function with reg.
 
-Reg variable contains the pointer ExceptionList, to follow with me compile the code provided at the bottom of the page and open it with Windbg. 
+Reg variable contains the pointer ExceptionList, to follow with me compile the code provided at the bottom of the page and open it with Windbg.
 
-```
+```nasm
 0:000> bp $exentry
 *** Unable to resolve unqualified symbol in Bp expression '$extentry'.
 0:000> g
@@ -460,7 +460,7 @@ poc+0x1000:
 
 We set a BP at `0040100a` the second `xor eax,eax` so we can examine the value of ecx which holds the pointer to ExceptionList.
 
-```
+```nasm
 0:000> bp 0040100a
 0:000> g
 Breakpoint 2 hit
@@ -493,7 +493,7 @@ TEB at 0030b000
 
 Nice! rcx holds indeed ExceptionList pointer, next we will set a new bp at `0040101f`.
 
-```
+```nasm
 0:000> u @eip La
 poc+0x100a:
 0040100a 31c0            xor     eax,eax
@@ -510,7 +510,7 @@ poc+0x100a:
      0 e Disable Clear u             0001 (0001) ($extentry)
      1 e Disable Clear  00401000     0001 (0001)  0:**** poc+0x1000
      2 e Disable Clear  0040100a     0001 (0001)  0:**** poc+0x100a
-0:000> bp 0040101f 
+0:000> bp 0040101f
 0:000> g
 Breakpoint 3 hit
 eax=00000018 ebx=000dffe4 ecx=cbf993fe edx=00000000 esi=00401000 edi=00401000
@@ -522,7 +522,7 @@ poc+0x101f:
 
 At this point ebx should hold the pointer to `_exception_registration_record` structure.
 
-```
+```nasm
 0:000> r
 eax=00000018 ebx=000dffe4 ecx=cbf993fe edx=00000000 esi=00401000 edi=00401000
 eip=0040101f esp=000dff74 ebp=000dff80 iopl=0         nv up ei pl nz ac po nc
@@ -538,7 +538,7 @@ ntdll!_NT_TIB
    +0x000 ExceptionList    : 0x000dffe4 _EXCEPTION_REGISTRATION_RECORD
    +0x004 StackBase        : 0x7714ad40 Void
    +0x008 StackLimit       : 0x708455ec Void
-   +0x00c SubSystemTib     : (null) 
+   +0x00c SubSystemTib     : (null)
    +0x010 FiberData        : 0x000dffec Void
    +0x010 Version          : 0xdffec
    +0x014 ArbitraryUserPointer : 0x77137a6e Void
@@ -551,7 +551,7 @@ ntdll!_EXCEPTION_REGISTRATION_RECORD
 
 Confirmed! we should now have an idea, let speed up our investigation and set a break point at the end before the program terminates (`0x00401080`).
 
-```
+```nasm
 0:000> u @eip L20
 poc+0x101f:
 0040101f 31c0            xor     eax,eax
@@ -590,7 +590,7 @@ poc+0x101f:
 
 We hit the bp after executing the program and everything matches.
 
-```
+```nasm
 0:000> g
 Breakpoint 4 hit
 eax=00000015 ebx=77158a69 ecx=cbf993fa edx=00000000 esi=00401000 edi=00401000
@@ -625,7 +625,7 @@ TEB at 0030b000
     HardErrorMode:        0
 ```
 
-We can compare the output of the debugger along side with our program show in the screenshot below.  
+We can compare the output of the debugger along side with our program show in the screenshot below.
 
 ![PoC](/images/windows_seh/poc.png)
 
@@ -637,5 +637,5 @@ References:
 - SEH C/CPP MSDN  https://docs.microsoft.com/en-us/cpp/cpp/structured-exception-handling-c-cpp?view=msvc-170
 - Windows core programming notes (eighteen) SEH structured exception one https://blog.csdn.net/wangpengk7788/article/details/54930185
 - https://flatassembler.net/
-- https://flatassembler.net/docs.php?article=fasmg_manual 
+- https://flatassembler.net/docs.php?article=fasmg_manual
 - https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/getting-started-with-windbg
