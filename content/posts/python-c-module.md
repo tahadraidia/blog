@@ -228,7 +228,7 @@ PS C:\Users\tahai\code\python-c-module>
 
 ## Final Code
 
-The final code is available at [https://gist.github.com/tahadraidia/9c57146c35f0ba0fced39b80883ab2d1](https://gist.github.com/tahadraidia/9c57146c35f0ba0fced39b80883ab2d1)
+{{< gist tahadraidia 9c57146c35f0ba0fced39b80883ab2d1 >}}
 
 ## Useful References
 

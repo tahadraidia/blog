@@ -35,7 +35,7 @@ On pasting this into the first name field and viewing any page under my account,
 
 ![POC Picture](/images/self-xss-amazon/reflected-js-context.png)
 
-<iframe width="730" height="488" src="https://www.youtube.com/embed/kAn4-8Ompro" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{< youtube kAn4-8Ompro >}}
 
 Please note that this is known as self-XSS, as you can only inject youself and can't harm anyone else with this unless chaining it with another vulnerablity such as an inconsistent access controls. 
 

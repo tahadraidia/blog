@@ -19,3 +19,7 @@ theme = "tahadraidia_theme"
     noHl = false
     style = 'perldoc'
     tabWidth = 4
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
