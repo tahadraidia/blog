@@ -1,8 +1,9 @@
 {{ define "main" }}
 <span class="home_button"><a href="/">Back to home</a></span>
 <h2 class="note_title">
-<a href="{{ .RelPermalink }}" rel="bookmark"
-           title="Permalink to {{ .Title }}">{{ .Title }} Tag | tahadraidia.com</a></h2>
+  <a href="{{ .RelPermalink }}" rel="bookmark"
+           title="Permalink to {{ .Title }}">{{ .Title }} Tag | tahadraidia.com</a>
+</h2>
 {{ range .Pages.ByPublishDate.Reverse }}
 <h4><a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
 {{ end }}

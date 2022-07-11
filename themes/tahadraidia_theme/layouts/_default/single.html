@@ -1,8 +1,9 @@
 {{ define "main" }}
 <span class="home_button"><a href="/">Back to home</a></span>
-<h2 class="note_title">
-<a href="{{ .RelPermalink }}" rel="bookmark"
-           title="Permalink to {{ .Title }}">{{ .Title }}</a></h2>
+<h2 class="note_title_content">
+  <a href="{{ .RelPermalink }}" rel="bookmark"
+            title="Permalink to {{ .Title }}">{{ .Title }}</a>
+</h2>
 {{ partial "metadata.html" . }}
 <br>
 {{ .Content }}

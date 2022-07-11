@@ -29,7 +29,7 @@ h1, h2, h3, h4, blockquote, q {
 }
 
 .container {
-    width: 85%;
+    width: 50%;
     margin: auto; /* Center of the page. */ 
 }
 
@@ -42,6 +42,11 @@ h1, h2, h3, h4, blockquote, q {
 	display: block;
 	margin: 0 auto;
 	padding: 0;
+}
+
+.container dl {
+    margin: 0 auto;
+    padding: 0;
 }
 
 /* Title header */
@@ -76,11 +81,28 @@ h1, h2, h3, h4, blockquote, q {
 	display: block;
 	padding: 0;
 }
+
 .note_title {
 	margin-top: 5px;
 	margin-bottom: 5px;
     text-align: left;
     text-decoration: none;
+}
+
+/* TODO: rename classes. */
+.note_title_content {
+    font-size: 120%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+    text-align: left;
+    text-decoration: none;
+}
+
+.note_title_content a {
+    text-align: left;
+    text-decoration: none;
+	color: black;
+    font-size: 1.5em;
 }
 
 .note_title a {

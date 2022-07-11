@@ -1,8 +1,8 @@
 {{ define "main" }}
-  
   <!-- Short About. -->
-  <!-- {{- partial "short-about.html" . -}} -->
+  <!--{{- partial "short-about.html" . -}}-->
   <!-- List notes. --> 
+  <dl><!-- Table wrapper. -->
   {{ if (where .Site.RegularPages "Section" "posts") }}
   <dd>
   	<h3>Posts</h3>
@@ -16,11 +16,11 @@
   {{ end }}
   {{ end }}
   <!-- List research. --> 
-  {{ if (where .Site.RegularPages "Section" "research") }}
+  {{ if (where .Site.RegularPages "Section" "publication") }}
   <dd>
-  	<h3>Researchs</h3>
+  	<h3>Publications</h3>
   </dd>
-  {{ range where .Site.RegularPages "Section" "research" }}
+  {{ range where .Site.RegularPages "Section" "publication" }}
   <dd>
     	<a id="note_title" class="note_title" href="{{.Permalink}}">{{.Title}}</a>
         <!-- <span id="note_date" class="note_date">{{.Date.Format "2006-01-02"}}</span> -->
@@ -28,5 +28,5 @@
   </dd>
   {{ end }}
   {{ end }}
-</dl>
+  </dl>
 {{ end }}
