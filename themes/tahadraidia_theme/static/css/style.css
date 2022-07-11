@@ -80,6 +80,7 @@ h1, h2, h3, h4, blockquote, q {
 .home_button {
 	display: block;
 	padding: 0;
+    margin-bottom: 5%;
 }
 
 .note_title {
@@ -94,12 +95,16 @@ h1, h2, h3, h4, blockquote, q {
     font-size: 120%;
 	margin-top: 5px;
 	margin-bottom: 5px;
-    text-align: left;
+    text-align: center;
     text-decoration: none;
 }
 
+/* Center date. Dirty hack for now.*/
+.published p {
+    text-align: center;
+}
+
 .note_title_content a {
-    text-align: left;
     text-decoration: none;
 	color: black;
     font-size: 1.5em;

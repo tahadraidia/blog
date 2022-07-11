@@ -1,12 +1,12 @@
 {{ define "main" }}
+
 <span class="home_button"><a href="/">Back to home</a></span>
-<h2 class="note_title_content">
-  <a href="{{ .RelPermalink }}" rel="bookmark"
-            title="Permalink to {{ .Title }}">{{ .Title }}</a>
-</h2>
+
+<!-- metadata.html inlcudes Page title. -->
 {{ partial "metadata.html" . }}
+
 <br>
+
 {{ .Content }}
-  <!-- Short About. -->
   {{- partial "footer.html" . -}}
 {{ end }}

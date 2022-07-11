@@ -1,5 +1,5 @@
 ---
-title: "Make SharpRDP a .NET Assembly Loadable"
+title: "Make SharpRDP a Loadable .NET Assembly"
 date: 2021-11-29T07:21:19Z
 categories: ["Security", "Programming"]
 tags: ["OSEP", "PEN300", "Reverse Engineer", "C#", "Powershell", ".NET Assembly"]

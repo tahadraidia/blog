@@ -1,6 +1,8 @@
 {{ define "main" }}
+
   <!-- Short About. -->
   <!--{{- partial "short-about.html" . -}}-->
+
   <!-- List notes. --> 
   <dl><!-- Table wrapper. -->
   {{ if (where .Site.RegularPages "Section" "posts") }}
@@ -10,11 +12,12 @@
   {{ range where .Site.RegularPages "Section" "posts" }}
   <dd>
     	<a id="note_title" class="note_title" href="{{.Permalink}}">{{.Title}}</a>
-        <!-- <span id="note_date" class="note_date">{{.Date.Format "2006-01-02"}}</span> -->
-        <span id="note_date" class="note_date">{{.Date.Format "Monday, Jan 2, 2006"}}</span>
+        {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
+        <span id="note_date" class="note_date">{{.Date.Format $dateFormat }}</span>
   </dd>
   {{ end }}
   {{ end }}
+
   <!-- List research. --> 
   {{ if (where .Site.RegularPages "Section" "publication") }}
   <dd>
@@ -23,8 +26,8 @@
   {{ range where .Site.RegularPages "Section" "publication" }}
   <dd>
     	<a id="note_title" class="note_title" href="{{.Permalink}}">{{.Title}}</a>
-        <!-- <span id="note_date" class="note_date">{{.Date.Format "2006-01-02"}}</span> -->
-        <span id="note_date" class="note_date">{{.Date.Format "Monday, Jan 2, 2006"}}</span>
+        {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
+        <span id="note_date" class="note_date">{{.Date.Format $dateFormat }}</span>
   </dd>
   {{ end }}
   {{ end }}

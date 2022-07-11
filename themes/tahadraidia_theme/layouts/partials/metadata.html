@@ -1,23 +1,23 @@
 {{ $dateTime := .PublishDate.Format "2006-01-02" }}
 {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
+{{ $title := .Page.Title }}
 <div class="note_info">
+    <!-- 
         <div class="origin">
             <strong>Created by:</strong><a href="https://twitter.com/tahadraidia">@tahadraidia</a> || <a href="https://tahadraidia.com">tahadraidia.com</a> 
         </div>
 		<br />
+    -->
+    <h2 class="note_title_content">
+        <a href="{{ .RelPermalink }}" rel="bookmark"
+                  title="Permalink to {{ .Title }}">{{ .Title }}</a>
+    </h2>
 
-        <div class="published" title="{{ .Date }}">
-            <strong>Published:</strong> <time datetime="{{ $dateTime }}">{{ .PublishDate.Format $dateFormat }}</time>
-        </div>
-		<br />
+    <div class="published" title="{{ .Date }}">
+        <!--<strong>Published:</strong> <time datetime="{{ $dateTime }}">{{ .PublishDate.Format $dateFormat }}</time>-->
+        <p>
+            <time datetime="{{ $dateTime }}">{{ .PublishDate.Format $dateFormat }}</time>
+        </p>
+    </div>
 
-        <div class="tags" title="tags">
-        	{{ with .Params.tags }}
-        	<strong>Tags:</strong>
-        	{{ range . }}
-			{{ $href := print (absURL "tags/") (urlize .) }}
-            <a class="btn btn-sm btn-outline-dark tag-btn" href="{{ $href }}">{{ . }}</a>
-            {{ end }}
-            {{ end }}
-        </div>
 </div><!-- end of post metadata -->
