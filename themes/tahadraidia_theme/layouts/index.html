@@ -3,6 +3,36 @@
   <!-- Short About. -->
   <!--{{- partial "short-about.html" . -}}-->
 
+  <!--Testing data.-->
+  <!--
+  {{ $publications := getJSON "data/Publications.json" }}
+  {{ if $publications }}
+  <dd>
+  	<h3>Publications</h3>
+  </dd>
+  {{  range $publications }}
+    <dd>
+        <a id="note_title" class="note_title" href="{{.link}}">{{.name}}</a>
+          <span id="note_date" class="note_date">{{.year}}</span>
+    </dd>
+  {{ end }}
+  {{ end }}
+  -->
+
+  <!-- List research. --> 
+  {{ if (where .Site.RegularPages "Section" "publication") }}
+  <dd>
+  	<h3>Publications</h3>
+  </dd>
+  {{ range where .Site.RegularPages "Section" "publication" }}
+  <dd>
+    	<a id="note_title" class="note_title" href="{{.Permalink}}">{{.Title}}</a>
+        {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
+        <span id="note_date" class="note_date">{{.Date.Format $dateFormat }}</span>
+  </dd>
+  {{ end }}
+  {{ end }}
+
   <!-- List notes. --> 
   <dl><!-- Table wrapper. -->
   {{ if (where .Site.RegularPages "Section" "posts") }}
@@ -18,18 +48,6 @@
   {{ end }}
   {{ end }}
 
-  <!-- List research. --> 
-  {{ if (where .Site.RegularPages "Section" "publication") }}
-  <dd>
-  	<h3>Publications</h3>
-  </dd>
-  {{ range where .Site.RegularPages "Section" "publication" }}
-  <dd>
-    	<a id="note_title" class="note_title" href="{{.Permalink}}">{{.Title}}</a>
-        {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
-        <span id="note_date" class="note_date">{{.Date.Format $dateFormat }}</span>
-  </dd>
-  {{ end }}
-  {{ end }}
+  
   </dl>
 {{ end }}
