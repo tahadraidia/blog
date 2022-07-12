@@ -9,7 +9,9 @@
     <link rel="stylesheet" type="text/css" href="/css/syntax.css">
     <!-- Google Analytics. -->
     {{ template "_internal/google_analytics.html" . }}
+    <!--
     {{ template "_internal/google_analytics_async.html" . }}
+    -->
     <!-- Tags Section. -->
     {{ $title := print .Site.Title " | " .Title }}
     {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
