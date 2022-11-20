@@ -7,7 +7,7 @@ OUTPUTDIR="./public/"
 #scp -P $SSH_PORT -rp "$OUTPUTDIR" "$SSH_USER@$SSH_HOST:$SSH_TARGET_DIR"
 
 # Remove Hugo from metadata.
-sed '/Hugo/d' -i ./public/index.html
+find ./public/ -type f -print0 | xargs -0 sed -i /Hugo/d
 
 # Upload to server.
 rsync -a "$OUTPUTDIR" "$SSH_USER@$SSH_HOST:$SSH_TARGET_DIR"
