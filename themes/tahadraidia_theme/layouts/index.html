@@ -19,12 +19,14 @@
   {{ end }}
   -->
 
+<marquee behavior="scroll" direction="left" scrollamount="10">Under Construction</marquee>
+
   <!-- List research. --> 
-  {{ if (where .Site.RegularPages "Section" "publication") }}
+  {{ if (where .Site.RegularPages "Section" "food") }}
   <dd>
   	<h3>Publications</h3>
   </dd>
-  {{ range where .Site.RegularPages "Section" "publication" }}
+  {{ range where .Site.RegularPages "Section" "food" }}
   <dd>
     	<a id="note_title" class="note_title" href="{{.Permalink}}">{{.Title}}</a>
         {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}

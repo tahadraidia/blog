@@ -12,6 +12,16 @@ html, body {
   background-color: white;
 }
 
+marquee {
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ffd700;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ffd700;
+}
+
 a {
   color: #245dc1;
 }

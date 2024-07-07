@@ -2,7 +2,6 @@ baseURL = "https://tahadraidia.com/"
 languageCode = "en-us"
 title = "Taha Draidia"
 theme = "tahadraidia_theme"
-googleAnalytics = "G-ZTS7JMX2YT"
 [params]
   mainSections = ['blog', 'publication', 'conference']
 [markup]
@@ -24,3 +23,6 @@ googleAnalytics = "G-ZTS7JMX2YT"
     endLevel = 3
     ordered = false
     startLevel = 2
+  [markup.goldmark.renderer]
+    [markup.goldmark.renderer.html]
+        minify = true
