@@ -101,7 +101,7 @@ Looking at the `FORBIDDEN_TAGS` array, a few tags that could be used to trigger 
 
 Taking another look at the `FORBIDDEN_TAGS` array, it turns out that `img` is not in the list. After inserting an image tag with invalid source attribute, an error message shows up on the console:
 
-![img-fetch](/images/securitymb-xss/img-fetch.png){: .center-image }
+![img-fetch](/images/securitymb-xss/img-fetch.png)
 
 It seems like `img` is the key to solving the challenge; however, we need to note a strange behaviour here, since we can fetch an image but can't render it even if the element is not part of the DOM.
 

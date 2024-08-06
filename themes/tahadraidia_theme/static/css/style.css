@@ -158,3 +158,8 @@ h1, h2, h3, h4, blockquote, q {
     font-size: 14px;
     overflow-x: auto;
 }
+
+/* Hugo Embed Tweet */
+.twitter-tweet {
+    margin: 0 auto;
+}
