@@ -88,7 +88,7 @@ PS C:\Users\tahai\code\cpping>
 
 Now, simply run the program. and WinDBG will pop up. Inspect the object address and content, and you will notice that if you need to fetch the value of `a`, the firt field in the struct, you can use the address of the object itself (since the first field resides at the same address as the object, i.e.,offset 0).
 
-![mem-windbg](/images/cs_incident/cdb_analyze.png)
+![mem-windbg](/images/cs_incident/windbg.png)
 
 This demonstrates that the example provided by the author is inaccurate in a real-world scenario
 
