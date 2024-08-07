@@ -5,6 +5,16 @@ tags: ["CrowdStrike", "Assembly", "Low Level", "Reverse Engineer", "Debugger", "
 date: 2024-07-28
 ---
 
+#### Updated 08/07/2024
+I received a lot of criticism suggesting I was trying to prove Tavis Ormandy wrong, which is not true. In fact, my entire video and post aim to delve into and support what Tavis explained.
+
+- This post discusses how Tavis Ormandy called out misinformation spreading on Twitter.
+- When I referred to "the author of the tweet," I meant the person whose tweet Tavis was highlighting.
+- Tavis is well respected in the industry, and I have always expressed my respect and admiration for his work.
+
+{{< youtube Yd5rh1eu__0 >}}
+
+
 #### Disclaimer
 This post isn't about accusing anyone or causing drama. It’s meant to show how common misinformation is on social media and to stress the importance of paying close attention in cybersecurity, especially with low-level topics like assembly.
 
