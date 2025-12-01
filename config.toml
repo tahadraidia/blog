@@ -1,28 +1,23 @@
 baseURL = "https://tahadraidia.com/"
 languageCode = "en-us"
 title = "Taha Draidia"
-theme = "tahadraidia_theme"
+theme = "tahadraidia_theme_v2"
+
 [params]
-  mainSections = ['blog', 'publication', 'conference']
+  authorName = "Taha Draidia"
+  websiteDescription = "Security Research and Software Engineering"
+  titleHeader1 = "Taha Draidia's Website"
+  titleHeader2 = "Security Research and Software Engineering"
+  [params.socials]
+    github = "tahadraidia"
+    linkedin = "tahadraidia"
+    twitter = "tahadraidia"
+    youtube = "tahadraidia"
+
 [markup]
   [markup.highlight]
-    anchorLineNos = false
-    codeFences = true
-    guessSyntax = false
-    hl_Lines = ''
-    hl_inline = false
-    lineAnchors = ''
-    lineNoStart = 1
+    noClasses = false
     lineNos = false
-    lineNumbersInTable = true
-    noClasses = true
-    noHl = false
-    style = 'perldoc'
-    tabWidth = 4
-  [markup.tableOfContents]
-    endLevel = 3
-    ordered = false
-    startLevel = 2
+
   [markup.goldmark.renderer]
-    [markup.goldmark.renderer.html]
-        minify = true
+    unsafe= true
